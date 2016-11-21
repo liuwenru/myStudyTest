@@ -4,3 +4,10 @@
 *.jar
 *.war
 *.ear
+target/*
+
+# except my config
+.classpath
+.project
+.settings
+
