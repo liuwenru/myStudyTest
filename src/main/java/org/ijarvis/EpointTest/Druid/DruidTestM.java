@@ -3,6 +3,7 @@ package org.ijarvis.EpointTest.Druid;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.UUID;
 
 import org.junit.Test;
 import org.springframework.beans.BeansException;
@@ -21,7 +22,8 @@ public class DruidTestM {
 		DruidDataSource datasource= (DruidDataSource) context.getBean("dataSource");
 		Connection connection=datasource.getConnection();
 		Statement command=connection.createStatement();
-		command.execute("insert into testinfo(name,pass) values('222','222')");
+		command.execute("insert into testinfo(name,pass) values('"+(UUID.randomUUID().toString())+"','"+UUID.randomUUID().toString()+"')");
+		connection.close();
 	}
 
 }
