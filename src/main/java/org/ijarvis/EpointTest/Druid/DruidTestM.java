@@ -13,13 +13,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.alibaba.druid.pool.DruidDataSource;
 
 public class DruidTestM {
-	
+	private static ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
+	private static DruidDataSource datasource= (DruidDataSource) context.getBean("dataSource");
 	public static void GetUrlinfo(){
 		
 	}
 	public static void druidInsert() throws BeansException, SQLException{
-		ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
-		DruidDataSource datasource= (DruidDataSource) context.getBean("dataSource");
 		Connection connection=datasource.getConnection();
 		Statement command=connection.createStatement();
 		command.execute("insert into testinfo(name,pass) values('"+(UUID.randomUUID().toString())+"','"+UUID.randomUUID().toString()+"')");
