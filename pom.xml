@@ -32,20 +32,25 @@
 	    <scope>provided</scope>
 	</dependency>
 	<dependency>
-		<groupId>com.squareup.okhttp3</groupId>
-		<artifactId>okhttp</artifactId>
-		<version>3.4.2</version>
+	  <groupId>com.squareup.okhttp3</groupId>
+	  <artifactId>okhttp</artifactId>
+	  <version>3.4.2</version>
 	</dependency>
 	<dependency>
 	    <groupId>mysql</groupId>
 	    <artifactId>mysql-connector-java</artifactId>
-	    <version>6.0.5</version>
+	    <version>6.0.2</version>
 	</dependency>
 	<dependency>
 	    <groupId>com.alibaba</groupId>
 	    <artifactId>druid</artifactId>
 	    <version>1.0.23</version>
 	</dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>4.3.4.RELEASE</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>EpointTest</finalName>
