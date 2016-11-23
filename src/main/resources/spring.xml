@@ -14,17 +14,17 @@
      http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.0.xsd">
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"> 
 	    <!-- 基本属性 url、user、password -->
-	    <property name="url" value="jdbc:mysql://192.168.203.89:3306/epointoneapm" />
+	    <property name="url" value="jdbc:mysql://192.168.149.155:3306/test" />
 	    <property name="username" value="root" />
 	    <property name="password" value="liuwenru" />
 	    <!-- 配置初始化大小、最小、最大 -->
-	    <property name="initialSize" value="1" />
-	    <property name="minIdle" value="1" /> 
-	    <property name="maxActive" value="20" />
+	    <property name="initialSize" value="40" />
+	    <property name="minIdle" value="30" /> 
+	    <property name="maxActive" value="500" />
 	    <!-- 配置获取连接等待超时的时间 -->
 	    <property name="maxWait" value="60000" />
 	    <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-	    <property name="timeBetweenEvictionRunsMillis" value="60000" />
+	    <property name="timeBetweenEvictionRunsMillis" value="600" />
 	    <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
 	    <property name="minEvictableIdleTimeMillis" value="300000" />
 	    <property name="validationQuery" value="SELECT 'x'" />
