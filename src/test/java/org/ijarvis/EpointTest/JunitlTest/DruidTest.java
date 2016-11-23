@@ -10,5 +10,11 @@ public class DruidTest {
 	public void DruidTest() throws IOException{
 		DruidMonitorTest.GetDruidMonitorInfo();
 	}
-
+	
+	@Test
+	public void DruidSpringTest(){
+		
+		
+		
+	}
 }
