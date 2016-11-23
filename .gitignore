@@ -11,4 +11,6 @@ target/*
 .project
 .settings
 
+logs
+
 /target/
