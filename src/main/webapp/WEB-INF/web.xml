@@ -12,7 +12,15 @@
 	     <servlet-name>App</servlet-name>
 	     <url-pattern>/App</url-pattern>
 	</servlet-mapping>
-	   <servlet>
+	<servlet>
+         <servlet-name>WeblogicTest</servlet-name>
+         <servlet-class>org.ijarvis.EpointTest.Weblogic.WebLogicLogTest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+         <servlet-name>WeblogicTest</servlet-name>
+         <url-pattern>/WeblogicTest</url-pattern>
+    </servlet-mapping>
+	<servlet>
          <servlet-name>DruidInsert</servlet-name>
          <servlet-class>org.ijarvis.EpointTest.Druid.DruidTestInsert</servlet-class>
     </servlet>
