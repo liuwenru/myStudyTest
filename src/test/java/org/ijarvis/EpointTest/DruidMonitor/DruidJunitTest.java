@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.UUID;
 
 import org.ijarvis.EpointTest.Druid.DruidTestM;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +14,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alibaba.druid.pool.DruidDataSource;
 
+
 public class DruidJunitTest {
+	@Ignore
 	@Test
 	public void DruidTest() throws BeansException, SQLException{
 //		DruidTestM.druidInsert();
