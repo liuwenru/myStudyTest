@@ -10,8 +10,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Configuration
-@ComponentScan(basePackageClasses = org.ijarvis.EpointTest.SpringFrame.SgtPeppers.class)
+@ComponentScan
 public class CDPlayerConfig {
-
 
 }
