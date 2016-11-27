@@ -16,7 +16,6 @@ public class DruidTestM {
 	private static ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
 	private static DruidDataSource datasource= (DruidDataSource) context.getBean("dataSource");
 	public static void GetUrlinfo(){
-		
 	}
 	public static void druidInsert() throws BeansException, SQLException{
 		Connection connection=datasource.getConnection();
