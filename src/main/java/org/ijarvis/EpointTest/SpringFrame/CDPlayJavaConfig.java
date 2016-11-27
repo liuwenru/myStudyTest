@@ -8,7 +8,6 @@ public class CDPlayJavaConfig {
 
 	@Bean
 	public CompactDisc sgtPeppers(){
-		
-		return new SgtPeppers();
+		return new WhiteAlbum();
 	}
 }

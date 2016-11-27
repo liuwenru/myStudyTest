@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
 
-import org.junit.Test;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,7 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.alibaba.druid.pool.DruidDataSource;
 
 public class DruidTestM {
-	private static ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
+	private static ApplicationContext context=new ClassPathXmlApplicationContext("spring-mvc.xml");
 	private static DruidDataSource datasource= (DruidDataSource) context.getBean("dataSource");
 	public static void GetUrlinfo(){
 	}
