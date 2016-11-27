@@ -26,4 +26,8 @@ public class CDPlayerTest {
         Assert.assertNotNull(cd);
         this.cd.play();
     }
+    @Test
+    public void TestAutoConfig(){
+    	
+    }
 }
