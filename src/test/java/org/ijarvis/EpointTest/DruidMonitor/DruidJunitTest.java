@@ -20,11 +20,11 @@ public class DruidJunitTest {
 	@Test
 	public void DruidTest() throws BeansException, SQLException{
 //		DruidTestM.druidInsert();
-		ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
-		DruidDataSource datasource= (DruidDataSource) context.getBean("dataSource");
-		Connection connection=datasource.getConnection();
-		Statement command=connection.createStatement();
-		command.execute("insert into testinfo(name,pass) values('"+(UUID.randomUUID().toString())+"','"+UUID.randomUUID().toString()+"')");
-		connection.close();
+//		ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
+//		DruidDataSource datasource= (DruidDataSource) context.getBean("dataSource");
+//		Connection connection=datasource.getConnection();
+//		Statement command=connection.createStatement();
+//		command.execute("insert into testinfo(name,pass) values('"+(UUID.randomUUID().toString())+"','"+UUID.randomUUID().toString()+"')");
+//		connection.close();
 	}
 }
