@@ -19,6 +19,7 @@ public class WebLogicLogTest extends HttpServlet {
 	private static int seq=0;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//TODO 测试所有的日志都能够支持显示输出
 		int tmp=seq++;
 		logger.info("info-----"+tmp);
 		logger.debug("debug---"+tmp);
@@ -29,7 +30,6 @@ public class WebLogicLogTest extends HttpServlet {
 		try {
 			throw new IOException();
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		throw new ServletException();

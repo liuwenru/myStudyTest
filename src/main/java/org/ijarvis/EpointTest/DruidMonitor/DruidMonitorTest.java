@@ -24,7 +24,6 @@ public class DruidMonitorTest {
 	private static String url_base="http://192.168.149.150:8080/EpointTest";
 	private static JsonFactory jsonFactory=new JsonFactory();
 	public static void GetDruidMonitorInfo() throws IOException{
-		
 		OkHttpClient client = new OkHttpClient();
 		Request request=new Request.Builder().url(url_base+"/druid/datasource.json").build();
 		Response response=client.newCall(request).execute();

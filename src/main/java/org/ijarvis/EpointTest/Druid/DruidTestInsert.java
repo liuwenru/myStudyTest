@@ -20,7 +20,6 @@ public class DruidTestInsert extends HttpServlet {
 			DruidTestM.druidInsert();
 			logger.info("insert success.....");
 		} catch (BeansException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
