@@ -27,9 +27,12 @@ public class WebLogicLogTest{
 		System.out.println("this is syso "+tmp);
 		System.err.println("this is syserr "+tmp);
 		try {
-			throw new IOException();
-		} catch (Exception e) {
+			throw new MyException();
+		} catch (MyException e) {
 			e.printStackTrace();
+
+			//logger.error(e);
+
 		}
 		throw new ServletException();
 	}
