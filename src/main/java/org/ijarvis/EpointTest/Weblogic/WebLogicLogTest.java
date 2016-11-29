@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-public class WebLogicLogTest extends HttpServlet {
+public class WebLogicLogTest{
 
 	/**
 	 * 
@@ -17,8 +17,7 @@ public class WebLogicLogTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger=Logger.getLogger(WebLogicLogTest.class);
 	private static int seq=0;
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void doGet() throws ServletException, IOException {
 		//TODO 测试所有的日志都能够支持显示输出
 		int tmp=seq++;
 		logger.info("info-----"+tmp);

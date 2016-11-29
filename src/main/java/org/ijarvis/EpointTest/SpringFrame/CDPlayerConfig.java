@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = "org.ijarvis.SpringFrame")
 public class CDPlayerConfig {
 
 }

@@ -1,7 +1,9 @@
 package org.ijarvis.EpointTest.SpringFrame;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WhiteAlbum implements CompactDisc {
 	
 	private static final Logger logger=Logger.getLogger(WhiteAlbum.class);
