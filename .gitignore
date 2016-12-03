@@ -4,6 +4,7 @@
 *.jar
 *.war
 *.ear
+*.hprof
 target/*
 
 # except my config
