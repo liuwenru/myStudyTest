@@ -27,8 +27,7 @@ public class HomeController {
         return  "home";
     }
     @RequestMapping(value = "/weblogic",method = RequestMethod.GET)
-    public  String weblogic() throws ServletException, IOException {
-        new WebLogicLogTest().doGet();
+    public  String weblogic() {
         return "home";
     }
 }
