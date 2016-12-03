@@ -2,8 +2,8 @@
 
 <head>
 <title>Docker运营监控平台</title>
-<script src="./resources/vue.js"></script>
-
+<script src="/EpointTest/resources/vue.js"></script>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 </head>
 <div id="app">
   <p>{{ message }}</p>

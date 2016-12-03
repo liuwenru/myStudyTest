@@ -30,9 +30,7 @@ public class WebLogicLogTest{
 			throw new MyException();
 		} catch (MyException e) {
 			e.printStackTrace();
-
 			//logger.error(e);
-
 		}
 		throw new ServletException();
 	}
