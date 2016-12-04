@@ -7,7 +7,7 @@ import org.ijarvis.EpointTest.SpringMVC.Model.frame_user;
  * Created by ijarvis on 12/4/16.
  */
 public interface Frame_userMapper {
-    @Select("select * from frame_user where userguid= #{id}")
+    @Select("select * from frame_user where userguid= #{uuid}")
     public frame_user selectFrameuser(String uuid);
 
 
