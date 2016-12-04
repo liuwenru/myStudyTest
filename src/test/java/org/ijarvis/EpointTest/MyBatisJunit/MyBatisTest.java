@@ -1,4 +1,4 @@
-package org.ijarvis.EpointTest.MyBatisJunits;
+package org.ijarvis.EpointTest.MyBatisJunit;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

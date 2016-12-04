@@ -1,4 +1,4 @@
-package org.ijarvis.EpointTest.DruidMonitor;
+package org.ijarvis.EpointTest.Druid;
 
 
 import java.io.IOException;
@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
 import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

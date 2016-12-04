@@ -1,6 +1,5 @@
-package org.ijarvis.EpointTest.MyBatis;
+package org.ijarvis.EpointTest.MyBatisJunit;
 
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 

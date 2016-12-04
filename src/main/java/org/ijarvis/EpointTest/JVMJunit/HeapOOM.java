@@ -1,4 +1,4 @@
-package org.ijarvis.EpointTest.JVM;
+package org.ijarvis.EpointTest.JVMJunit;
 
 import java.util.ArrayList;
 import java.util.List;
