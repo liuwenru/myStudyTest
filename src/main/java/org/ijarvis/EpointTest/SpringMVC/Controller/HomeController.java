@@ -1,6 +1,7 @@
 package org.ijarvis.EpointTest.SpringMVC.Controller;
 
 import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,26 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class HomeController {
     private  static  final Logger logger=Logger.getLogger(HomeController.class);
-    class  user{
-
-        private  String name;
-        private  String pass;
-
-        public void setName(String name) {
-            this.name = name;
-        }
-        public String getName() {
-            return name;
-        }
-
-        public String getPass() {
-            return pass;
-        }
-
-        public void setPass(String pass) {
-            this.pass = pass;
-        }
-    }
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String home(@RequestHeader("User-Agent") String userAgent){
         logger.debug(userAgent+"----------");
@@ -63,5 +44,15 @@ public class HomeController {
         logger.debug(request.getParameter("name"));
         model.addAttribute("yourname",request.getParameter("name"));
         return  "home";
+    }
+    @RequestMapping(value = "addusers",method = RequestMethod.POST)
+    public  String addUsers(user tmpusers,Model model){
+        model.addAttribute("yourname","Epoint");
+        logger.debug("********************************");
+        logger.debug(tmpusers.getName());
+        logger.debug("-------------------------------");
+        logger.debug(tmpusers.getPass());
+        logger.debug("********************************");
+        return "home";
     }
 }

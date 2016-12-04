@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-<form method="post" action="adduser">
+<form method="post" action="addusers">
  a: <input id="a" type="text" name="name"/>
  b: <input id="b" type="text" name="pass"/>
  <input type="submit" value="Submit" />
