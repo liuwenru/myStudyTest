@@ -38,8 +38,7 @@
 	    <!-- 配置监控统计拦截的filters -->
 	    <property name="filters" value="stat" /> 
 	</bean>
-	<bean id="viewResolver"
-		  class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
 		<property name="prefix">
 			<value>/</value>
 		</property>
@@ -47,6 +46,16 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
+	<!--
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>view/layout.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="tilesviewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"></bean>
+	-->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:annotation-driven/>
 </beans> 

@@ -25,6 +25,7 @@ public class HomeController {
     @RequestMapping(value = "/weblogic",method = RequestMethod.GET)
     public  String weblogic(@RequestHeader("User-Agent") String userAgent) {
         logger.debug(userAgent+"------------");
+
         return "home";
     }
     //使用PathVarible来获取数据
@@ -55,4 +56,5 @@ public class HomeController {
         logger.debug("********************************");
         return "home";
     }
+
 }
