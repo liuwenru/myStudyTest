@@ -16,8 +16,8 @@ import java.io.InputStream;
  */
 public class MyBatisTest {
     @Test
-    public  void  TestMyBatis() throws IOException {
-        String resource = "mybaties.xml";
+    public  void  TestMyBatis() throws IOException{
+        String resource = "mybatis.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         sqlSessionFactory.getConfiguration().addMapper(Frame_userMapper.class);
