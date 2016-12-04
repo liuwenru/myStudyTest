@@ -1,22 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-
 <head>
-<title>Docker运营监控平台</title>
-<script src="/EpointTest/resources/vue.js"></script>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 </head>
-<div id="app">
-  <p>{{ message }}</p>
-  <input v-model="message">
-</div>
 <body>
+<c:out value="${yourname}"></c:out>
 </body>
-<script type="text/javascript">
-new Vue({
-  el: '#app',
-  data: {
-    message: 'Hello Vue.js!'
-  }
-})
-</script>
 </html>
