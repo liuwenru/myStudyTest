@@ -39,6 +39,4 @@ public class JedisUntils {
         Long end=System.currentTimeMillis();
         System.out.println(end-start);
     }
-
-
 }
