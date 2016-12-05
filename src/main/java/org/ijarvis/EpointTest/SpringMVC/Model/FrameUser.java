@@ -3,7 +3,7 @@ package org.ijarvis.EpointTest.SpringMVC.Model;
 /**
  * Created by ijarvis on 12/4/16.
  */
-public class frameuser {
+public class FrameUser {
     private  String userguid;
     private  String loginid;
     private  String password;

@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
-import org.ijarvis.EpointTest.SpringMVC.Model.frame_user;
-import org.ijarvis.EpointTest.SpringMVC.SpringMVC.Mapper.Frame_userMapper;
+import org.ijarvis.EpointTest.SpringMVC.Mappers.FrameuserMapper;
+import org.ijarvis.EpointTest.SpringMVC.Model.FrameUser;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -39,10 +39,10 @@ public class DbController {
 		configApplicationContext.scan("org.ijarvis.EpointTest.SpringMVC");
 		configApplicationContext.refresh();
 		SqlSessionFactory sqlSessionFactory=(SqlSessionFactory) configApplicationContext.getBean("sqlSessionFactory");
-		sqlSessionFactory.getConfiguration().addMapper(Frame_userMapper.class);
+		sqlSessionFactory.getConfiguration().addMapper(FrameuserMapper.class);
 		SqlSession sqlSession=sqlSessionFactory.openSession();
-		Frame_userMapper frame_userMapper=sqlSession.getMapper(Frame_userMapper.class);
-		frame_user frameuser=(frame_user) frame_userMapper.selectFrameuser("46cc3826-cf59-463e-80b1-cf9203ec2f55");
+		FrameuserMapper frame_userMapper=sqlSession.getMapper(FrameuserMapper.class);
+		FrameUser frameuser=(FrameUser) frame_userMapper.selectFrameuser("46cc3826-cf59-463e-80b1-cf9203ec2f55");
 		logger.debug(frameuser.getPassword());
 		return "home";
 	}

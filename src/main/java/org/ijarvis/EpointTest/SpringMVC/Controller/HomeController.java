@@ -1,14 +1,16 @@
 package org.ijarvis.EpointTest.SpringMVC.Controller;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
+import org.ijarvis.EpointTest.SpringMVC.Mappers.FrameuserMapper;
+import org.ijarvis.EpointTest.SpringMVC.Model.FrameUser;
 import org.ijarvis.EpointTest.SpringMVC.SpringMVCUtils.SpringContextUtils;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by ijarvis on 11/27/16.
@@ -26,6 +28,12 @@ public class HomeController {
     @RequestMapping(value = "/weblogic",method = RequestMethod.GET)
     public  String weblogic(@RequestHeader("User-Agent") String userAgent) {
         logger.debug(userAgent+"------------");
+        SqlSessionFactory sqlSessionFactory=(SqlSessionFactory) SpringContextUtils.getApplicationContext().getBean("sqlSessionFactory");
+        sqlSessionFactory.getConfiguration().addMappers("org.ijarvis.EpointTest.SpringMVC.Mappers");
+        SqlSession sqlSession=sqlSessionFactory.openSession();
+        FrameuserMapper frameuserMapper= sqlSession.getMapper(FrameuserMapper.class);
+        FrameUser frameusertmp= frameuserMapper.selectFrameuser("74178a09-6134-4833-9e6b-8da8a0c65c2e");
+        logger.debug(frameusertmp.getPassword());
         return "home";
     }
     
