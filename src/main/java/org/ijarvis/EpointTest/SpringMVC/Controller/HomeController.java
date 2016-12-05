@@ -28,6 +28,7 @@ public class HomeController {
         logger.debug(userAgent+"------------");
         return "home";
     }
+    
     //使用PathVarible来获取数据
     @RequestMapping(value = "/list/{uuid}",method = RequestMethod.GET)
     public  String listUsers(@PathVariable("uuid") String uuid,Model model){
