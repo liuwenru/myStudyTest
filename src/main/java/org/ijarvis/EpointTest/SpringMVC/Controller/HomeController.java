@@ -1,6 +1,7 @@
 package org.ijarvis.EpointTest.SpringMVC.Controller;
 
 import org.apache.log4j.Logger;
+import org.ijarvis.EpointTest.SpringMVC.SpringMVCUtils.SpringContextUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +26,6 @@ public class HomeController {
     @RequestMapping(value = "/weblogic",method = RequestMethod.GET)
     public  String weblogic(@RequestHeader("User-Agent") String userAgent) {
         logger.debug(userAgent+"------------");
-
         return "home";
     }
     //使用PathVarible来获取数据
