@@ -1,5 +1,6 @@
 package org.ijarvis.EpointTest.SpringMVC.Controller;
 
+import org.apache.ibatis.logging.log4j.Log4jImpl;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
@@ -27,15 +28,7 @@ public class HomeController {
     }
     @RequestMapping(value = "/weblogic",method = RequestMethod.GET)
     public  String weblogic(@RequestHeader("User-Agent") String userAgent) {
-        logger.debug(userAgent+"------------");
-        SqlSessionFactory sqlSessionFactory=(SqlSessionFactory) SpringContextUtils.getApplicationContext().getBean("sqlSessionFactory");
-//        sqlSessionFactory.getConfiguration().addMappers("org.ijarvis.EpointTest.SpringMVC.Mappers");
-        SqlSession sqlSession=sqlSessionFactory.openSession();
-        FrameuserMapper frameuserMapper= sqlSession.getMapper(FrameuserMapper.class);
-        FrameUser frameusertmp= frameuserMapper.selectFrameuser().get(0);
-        logger.debug(frameuserMapper.selectFrameuser().size());
-        sqlSession.close();
-        return "home";
+        return  "home";
     }
     
     //使用PathVarible来获取数据
@@ -55,16 +48,6 @@ public class HomeController {
         logger.debug(request.getParameter("name"));
         model.addAttribute("yourname",request.getParameter("name"));
         return  "home";
-    }
-    @RequestMapping(value = "addusers",method = RequestMethod.POST)
-    public  String addUsers(user tmpusers,Model model){
-        model.addAttribute("yourname","Epoint");
-        logger.debug("********************************");
-        logger.debug(tmpusers.getName());
-        logger.debug("-------------------------------");
-        logger.debug(tmpusers.getPass());
-        logger.debug("********************************");
-        return "home";
     }
 
 }
