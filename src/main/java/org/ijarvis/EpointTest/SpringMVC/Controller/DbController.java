@@ -42,7 +42,7 @@ public class DbController {
 		sqlSessionFactory.getConfiguration().addMapper(FrameuserMapper.class);
 		SqlSession sqlSession=sqlSessionFactory.openSession();
 		FrameuserMapper frame_userMapper=sqlSession.getMapper(FrameuserMapper.class);
-		FrameUser frameuser=(FrameUser) frame_userMapper.selectFrameuser("46cc3826-cf59-463e-80b1-cf9203ec2f55");
+		FrameUser frameuser=(FrameUser) frame_userMapper.selectFrameuser();
 		logger.debug(frameuser.getPassword());
 		return "home";
 	}

@@ -29,11 +29,12 @@ public class HomeController {
     public  String weblogic(@RequestHeader("User-Agent") String userAgent) {
         logger.debug(userAgent+"------------");
         SqlSessionFactory sqlSessionFactory=(SqlSessionFactory) SpringContextUtils.getApplicationContext().getBean("sqlSessionFactory");
-        sqlSessionFactory.getConfiguration().addMappers("org.ijarvis.EpointTest.SpringMVC.Mappers");
+//        sqlSessionFactory.getConfiguration().addMappers("org.ijarvis.EpointTest.SpringMVC.Mappers");
         SqlSession sqlSession=sqlSessionFactory.openSession();
         FrameuserMapper frameuserMapper= sqlSession.getMapper(FrameuserMapper.class);
-        FrameUser frameusertmp= frameuserMapper.selectFrameuser("74178a09-6134-4833-9e6b-8da8a0c65c2e");
-        logger.debug(frameusertmp.getPassword());
+        FrameUser frameusertmp= frameuserMapper.selectFrameuser().get(0);
+        logger.debug(frameuserMapper.selectFrameuser().size());
+        sqlSession.close();
         return "home";
     }
     
