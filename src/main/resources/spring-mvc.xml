@@ -18,7 +18,7 @@
 	<mybatis:scan base-package="org.ijarvis.EpointTest.SpringMVC.Mappers" />
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 	    <!-- 基本属性 url、user、password -->
-	    <property name="url" value="jdbc:mysql://192.168.149.155:3306/epointoneapm" />
+	    <property name="url" value="jdbc:mysql://192.168.149.155:3306/test" />
 	    <property name="username" value="root" />
 	    <property name="password" value="liuwenru" />
 	    <!-- 配置初始化大小、最小、最大 -->
