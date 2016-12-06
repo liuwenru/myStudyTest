@@ -17,13 +17,13 @@ import java.io.InputStream;
 public class MyBatisTest {
     @Test
     public  void  TestMyBatis() throws IOException{
-        String resource = "mybatis.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        sqlSessionFactory.getConfiguration().addMapper(FrameuserMapper.class);
-        SqlSession session = sqlSessionFactory.openSession();
-        FrameuserMapper mapper = session.getMapper(FrameuserMapper.class);
-        FrameUser frameuser = mapper.selectFrameuser("46cc3826-cf59-463e-80b1-cf9203ec2f55");
-        System.out.println(frameuser.getLoginid());
+//        String resource = "mybatis.xml";
+//        InputStream inputStream = Resources.getResourceAsStream(resource);
+//        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+//        sqlSessionFactory.getConfiguration().addMapper(FrameuserMapper.class);
+//        SqlSession session = sqlSessionFactory.openSession();
+//        FrameuserMapper mapper = session.getMapper(FrameuserMapper.class);
+//        FrameUser frameuser = mapper.selectFrameuser("46cc3826-cf59-463e-80b1-cf9203ec2f55");
+//        System.out.println(frameuser.getLoginid());
     }
 }
