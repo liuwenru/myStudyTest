@@ -14,6 +14,4 @@ public interface MyUserMapper {
 
     @Update("update testinfo set name=#{name} , pass=#{pass} where userid=#{userid}")
     int UpdateUser(MyUser myUser);
-
-    @Delete()
 }
