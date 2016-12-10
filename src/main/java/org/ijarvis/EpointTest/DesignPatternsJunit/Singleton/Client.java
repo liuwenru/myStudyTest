@@ -1,4 +1,4 @@
-package org.ijarvis.EpointTest.DesignPatterns.Singleton;
+package org.ijarvis.EpointTest.DesignPatternsJunit.Singleton;
 /**
  * @author ijarvis
  *	如何使用单例模式
