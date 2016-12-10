@@ -1,4 +1,4 @@
-package org.ijarvis.EpointTest.DesignPatterns.Singleton;
+package org.ijarvis.EpointTest.DesignPatternsJunit.Singleton;
 
 /**
  * Created by ijarvis on 11/30/16.

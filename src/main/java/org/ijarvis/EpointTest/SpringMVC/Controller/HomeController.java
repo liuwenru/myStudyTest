@@ -28,6 +28,7 @@ public class HomeController {
     }
     @RequestMapping(value = "/weblogic",method = RequestMethod.GET)
     public  String weblogic(@RequestHeader("User-Agent") String userAgent) {
+
         return  "home";
     }
     
