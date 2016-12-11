@@ -3,6 +3,7 @@ package org.ijarvis.EpointTest.JVMJunit;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 /*
  * 测试JVM的OOM
@@ -13,6 +14,7 @@ import org.junit.Test;
 public class JVMJunitTest {
 	static class OOMObject{
 	}
+	@Ignore
 	@Test
 	public void HeapOOMTest(){
 		List<OOMObject> list=new ArrayList<OOMObject>();

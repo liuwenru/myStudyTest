@@ -7,11 +7,14 @@ import org.apache.log4j.Logger;
 import org.ijarvis.EpointTest.SpringMVC.Mappers.FrameuserMapper;
 import org.ijarvis.EpointTest.SpringMVC.Model.FrameUser;
 import org.ijarvis.EpointTest.SpringMVC.SpringMVCUtils.SpringContextUtils;
+import org.ijarvis.EpointTest.Weblogic.WebLogicLogTest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 /**
  * Created by ijarvis on 11/27/16.
@@ -27,8 +30,8 @@ public class HomeController {
         return  "index";
     }
     @RequestMapping(value = "/weblogic",method = RequestMethod.GET)
-    public  String weblogic(@RequestHeader("User-Agent") String userAgent) {
-
+    public  String weblogic(@RequestHeader("User-Agent") String userAgent) throws ServletException, IOException {
+        new WebLogicLogTest().doGet();
         return  "home";
     }
     
