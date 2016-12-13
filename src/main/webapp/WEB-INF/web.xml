@@ -33,6 +33,29 @@
 		<url-pattern>/spring/*</url-pattern>
 	</servlet-mapping>
 	<!--启用Spring MVC END-->
+	<!--Atmosphere Framework -->
+	<servlet>
+		<description>AtmosphereServlet</description>
+		<servlet-name>AtmosphereServlet</servlet-name>
+		<servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
+		<init-param>
+			<!-- Atmosphere Framework扫描注解的包 -->
+			<param-name>org.atmosphere.cpr.packages</param-name>
+			<param-value>org.ijarvis.EpointTest.Atmosphere</param-value>
+		</init-param>
+		<init-param>
+			<param-name>org.atmosphere.interceptor.HeartbeatInterceptor.clientHeartbeatFrequencyInSeconds</param-name>
+			<param-value>10</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+		<async-supported>true</async-supported>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AtmosphereServlet</servlet-name>
+		<url-pattern>/websocket</url-pattern>
+	</servlet-mapping>
+
+
 	<filter>
 	    <filter-name>DruidWebStatFilter</filter-name>
 	    <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
