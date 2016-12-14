@@ -13,7 +13,8 @@ $(function () {
     var transport = 'websocket';
     // We are now ready to cut the request
     var url1=document.location.toString() + 'chat';
-    var url2=document.location.toString()+"/websocket/chat";
+    alert(document.location.toString());
+    var url2=document.location.toString() +"/websocket/chat";
     var request = { url: url2,
         contentType : "application/json",
         logLevel : 'debug',
@@ -96,7 +97,7 @@ $(function () {
     };
 
     subSocket = socket.subscribe(request);
-    var number=0;
+
     input.keydown(function(e) {
         if (e.keyCode === 13) {
             var msg = $(this).val();
@@ -106,10 +107,10 @@ $(function () {
                 author = msg;
             }
 
-            subSocket.push(atmosphere.util.stringifyJSON({ author: number++, message: number++ }));
+            subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: msg }));
             $(this).val('');
 
-            //input.attr('disabled', 'disabled');
+            input.attr('disabled', 'disabled');
             if (myName === false) {
                 myName = msg;
             }
@@ -122,13 +123,4 @@ $(function () {
             + (datetime.getMinutes() < 10 ? '0' + datetime.getMinutes() : datetime.getMinutes())
             + ': ' + message + '</p>');
     }
-    function sedmess()
-    {
-
-        subSocket.push(atmosphere.util.stringifyJSON({ author: "autosed", message: "autosed" }));
-        console.log("send message............");
-    }
-    //setInterval(sedmess,500);//1000为1秒钟
-
-
 });
