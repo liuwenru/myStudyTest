@@ -13,7 +13,8 @@ $(function () {
     var transport = 'websocket';
     // We are now ready to cut the request
     var url1=document.location.toString() + 'chat';
-    var url2="http://192.168.149.150:8080/EpointTest/websocket/chat";
+    alert(document.location.toString());
+    var url2=document.location.toString() +"/websocket/chat";
     var request = { url: url2,
         contentType : "application/json",
         logLevel : 'debug',
@@ -57,7 +58,7 @@ $(function () {
     request.onMessage = function (response) {
 
         var message = response.responseBody;
-        alert(message);
+        console.log(message);
         try {
             var json = atmosphere.util.parseJSON(message);
         } catch (e) {
