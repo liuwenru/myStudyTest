@@ -16,9 +16,9 @@ public class JredisClusterUtils {
     public static void ClusterTest(){
         Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
         //Jedis Cluster will attempt to discover cluster nodes automatically
-        jedisClusterNodes.add(new HostAndPort("192.168.149.152", 7379));
-        jedisClusterNodes.add(new HostAndPort("192.168.149.153", 7379));
-        jedisClusterNodes.add(new HostAndPort("192.168.149.154", 7379));
+        jedisClusterNodes.add(new HostAndPort("192.168.149.152", 6379));
+        jedisClusterNodes.add(new HostAndPort("192.168.149.153", 6379));
+        jedisClusterNodes.add(new HostAndPort("192.168.149.154", 6379));
         JedisCluster jc = new JedisCluster(jedisClusterNodes);
         jc.set("foo", "bar");
         String value = jc.get("foo");
