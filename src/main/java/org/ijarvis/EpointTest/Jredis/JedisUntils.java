@@ -8,7 +8,7 @@ import java.util.Set;
  */
 public class JedisUntils {
 
-    private  static  final  String host="192.168.149.234";
+    private  static  final  String host="192.168.149.152";
     private  static  final  int port=6379;
     private static  final  HashMap<String,Integer> AccCount=new HashMap<String,Integer>();
     private  static  final  String hashmap_keys="TEST_MAP1";
@@ -34,5 +34,11 @@ public class JedisUntils {
         System.out.println(AccCount);
         Long end=System.currentTimeMillis();
         System.out.println(end-start);
+    }
+
+    public  static  void  TestRedisCluster(){
+        Jedis jedis = new Jedis(host,port);
+        jedis.set("key1", "value");
+        String value = jedis.get("key1");
     }
 }

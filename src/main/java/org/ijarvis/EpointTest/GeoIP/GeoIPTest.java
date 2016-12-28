@@ -8,6 +8,7 @@ import com.maxmind.geoip2.record.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -42,5 +43,7 @@ public class GeoIPTest {
         Location location = response.getLocation();
         System.out.println(location.getLatitude());  //纬度
         System.out.println(location.getLongitude()); //经度
+        
+        Map<String, Object> tMap=HashMap<String, Object>();
     }
 }
