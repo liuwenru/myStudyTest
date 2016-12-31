@@ -44,6 +44,5 @@ public class GeoIPTest {
         System.out.println(location.getLatitude());  //纬度
         System.out.println(location.getLongitude()); //经度
         
-        Map<String, Object> tMap=HashMap<String, Object>();
     }
 }
