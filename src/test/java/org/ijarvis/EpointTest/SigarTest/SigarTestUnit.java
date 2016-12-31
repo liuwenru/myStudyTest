@@ -108,10 +108,11 @@ public class SigarTestUnit {
             System.out.println(fs.getDevName() + "读出：    " + usage.getDiskReads());
             System.out.println(fs.getDevName() + "写入：    " + usage.getDiskWrites());
         }
+        sigar.getLoadAverage();
         return;
     }
     public  static void  main(String[] args) throws Exception {
-        Sigar tmp=SigarTestUnit.initSigar(args[1]);
+        Sigar tmp=SigarTestUnit.initSigar("");
         net(tmp);
         file(tmp);
     }
