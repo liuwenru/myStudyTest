@@ -1,6 +1,5 @@
 package org.ijarvis.EpointTest.SigarTest;
 
-import com.google.common.io.Resources;
 import org.hyperic.sigar.*;
 import org.junit.Test;
 
@@ -10,12 +9,11 @@ import java.io.File;
  * Created by ijarvis on 12/28/16.
  */
 public class SigarTestUnit {
-
-
     private static Sigar initSigar(String Systemtype) {
         try {
-            String file = Resources.getResource("sigar/.sigar_shellrc").getFile();
-            File classPath = new File(file).getParentFile();
+            //String file = .getResource("sigar/.sigar_shellrc").getFile();
+            String file="";
+        	File classPath = new File(file).getParentFile();
 //            OperatingSystem OS = OperatingSystem.getInstance();
             System.out.println("-----------");
 //            System.out.println(OS.getName());

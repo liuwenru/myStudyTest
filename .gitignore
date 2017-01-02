@@ -17,3 +17,6 @@ logs
 /target/
 .idea
 EpointTest.iml
+
+src/main/resources/rebel.xml
+

@@ -4,7 +4,6 @@ package org.ijarvis.EpointTest.Druid;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
-import org.json.JSONObject;
 
 import com.fasterxml.jackson.core.JsonFactory;
 
@@ -28,8 +27,6 @@ public class DruidMonitorTest {
 		Response response=client.newCall(request).execute();
 		if (response.isSuccessful()) {
 			String body=response.body().string();
-			JSONObject datasourcejson=new JSONObject(body);
-			logger.info(datasourcejson.get("Content"));
 		}
 	}
 

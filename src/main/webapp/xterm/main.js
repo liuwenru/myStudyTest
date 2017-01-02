@@ -10,8 +10,8 @@ var terminalContainer = document.getElementById('terminal-container'),
     optionElements = {
       cursorBlink: document.querySelector('#option-cursor-blink')
     },
-    colsElement = document.getElementById('cols'), //获取xterm的宽
-    rowsElement = document.getElementById('rows'); //获取xterm的行
+    colsElement = document.getElementById('cols'),
+    rowsElement = document.getElementById('rows');
 
 function setTerminalSize () {
   var cols = parseInt(colsElement.value),
@@ -27,30 +27,17 @@ function setTerminalSize () {
 colsElement.addEventListener('change', setTerminalSize);
 rowsElement.addEventListener('change', setTerminalSize);
 
-optionElements.cursorBlink.addEventListener('change', createTerminal);
+//optionElements.cursorBlink.addEventListener('change', createTerminal);
 
 createTerminal();
 
 function createTerminal() {
-  // Clean terminal
-  while (terminalContainer.children.length) {
-    terminalContainer.removeChild(terminalContainer.children[0]);
-  }
+	  console.log("aaa");
   term = new Terminal({
     cursorBlink: optionElements.cursorBlink.checked
   });
-  term.on('resize', function (size) {
-    if (!pid) {
-      return;
-    }
-    var cols = size.cols,
-        rows = size.rows,
-        url = '/terminals/' + pid + '/size?cols=' + cols + '&rows=' + rows;
-
-    fetch(url, {method: 'POST'});
-  });
   protocol = (location.protocol === 'https:') ? 'wss://' : 'ws://';
-  socketURL = protocol + location.hostname + ((location.port) ? (':' + location.port) : '') + '/terminals/';
+  socketURL = protocol + location.hostname + ((location.port) ? (':' + location.port) : '') + '/EpointTest/chat';
 
   term.open(terminalContainer);
   term.fit();
@@ -61,21 +48,10 @@ function createTerminal() {
 
   colsElement.value = cols;
   rowsElement.value = rows;
-
-  fetch('/terminals?cols=' + cols + '&rows=' + rows, {method: 'POST'}).then(function (res) {
-
-    charWidth = Math.ceil(term.element.offsetWidth / cols);
-    charHeight = Math.ceil(term.element.offsetHeight / rows);
-
-    res.text().then(function (pid) {
-      window.pid = pid;
-      socketURL += pid;
-      socket = new WebSocket(socketURL);
-      socket.onopen = runRealTerminal; //定义socket的oneopen处理事件
-      socket.onclose = runFakeTerminal; //定义socket的onclose处理事件
-      socket.onerror = runFakeTerminal; //定义socket的onerror处理事件
-    });
-  });
+  socket = new WebSocket(socketURL);
+  socket.onopen = runRealTerminal;
+  socket.onclose = runFakeTerminal;
+  socket.onerror = runFakeTerminal;
 }
 
 
@@ -85,9 +61,10 @@ function runRealTerminal() {
 }
 
 function runFakeTerminal() {
-  if (term._initialized) {
-    return;
-  }
+  console.log("aaa");
+//  if (term._initialized) {
+//    return;
+//  }
 
   term._initialized = true;
 
@@ -96,7 +73,7 @@ function runFakeTerminal() {
   term.prompt = function () {
     term.write('\r\n' + shellprompt);
   };
-
+  console.log("bbbb");
   term.writeln('Welcome to xterm.js');
   term.writeln('This is a local terminal emulation, without a real terminal in the back-end.');
   term.writeln('Type some keys and commands to play around.');
