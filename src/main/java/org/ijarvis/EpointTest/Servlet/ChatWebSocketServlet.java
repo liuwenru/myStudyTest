@@ -27,7 +27,6 @@ public class ChatWebSocketServlet  {
     private String nickname="";  
     private Session session;
     public ChatWebSocketServlet() {
-		// TODO Auto-generated constructor stub
     	this.nickname=UUID.randomUUID().toString();
 	}
 	@OnOpen
@@ -35,7 +34,6 @@ public class ChatWebSocketServlet  {
 		logger.debug("websocket is open.........");
 		this.session=session;
 		connections.add(this);
-		logger.debug(this.nickname+" is comming.........");
 	}
 
     @OnClose  
@@ -45,8 +43,8 @@ public class ChatWebSocketServlet  {
     @OnMessage  
     public void receive(String message) throws IOException {
     	logger.debug(this.nickname+"----"+message);
-//    	broadcast(message);
     	execCommand(message);
+    	
     }
     private static void broadcast(String msg) {  
         for (ChatWebSocketServlet client : connections) {  
@@ -57,12 +55,11 @@ public class ChatWebSocketServlet  {
                 try {  
                     client.session.close();  
                 } catch (IOException e1) {  
-                    // Ignore  
                 }  
                 String message = String.format("* %s %s",  
                         client.nickname, "has been disconnected.");  
                 broadcast(message);  
-            }//try   
+            }
         }//for  
     }
     public static void execCommand(String cmd) throws IOException{

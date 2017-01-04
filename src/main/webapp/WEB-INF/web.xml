@@ -33,6 +33,17 @@
 		<url-pattern>/springmvc/*</url-pattern>
 	</servlet-mapping>
 	<!--启用Spring MVC END-->
+	<!-- 配置Atmosphere websocket -->
+	 <servlet>
+        <description>AtmosphereServlet</description>
+        <servlet-name>AtmosphereServlet</servlet-name>
+        <servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AtmosphereServlet</servlet-name>
+        <url-pattern>/websocket/*</url-pattern>
+    </servlet-mapping>
 	<filter>
 	    <filter-name>DruidWebStatFilter</filter-name>
 	    <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
