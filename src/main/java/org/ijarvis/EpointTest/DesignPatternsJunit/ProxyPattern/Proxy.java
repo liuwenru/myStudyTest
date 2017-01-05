@@ -13,7 +13,6 @@ public class Proxy implements Subject{
 	//定义干活的套路
 	@Override
 	public void request() {
-		// TODO Auto-generated method stub
 		this.before();
 		this.subject.request();
 		this.after();

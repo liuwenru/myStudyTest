@@ -11,7 +11,6 @@ public class WhiteAlbum implements CompactDisc {
 	private  String aritst="The Best";
 	@Override
 	public void play() {
-		// TODO Auto-generated method stub
 		logger.debug(this.title+"----------"+this.aritst);
 	}
 	
