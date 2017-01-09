@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
 import com.trilead.ssh2.Connection;
 import com.trilead.ssh2.StreamGobbler;
 
-@ServerEndpoint(value="/chat") 
+@ServerEndpoint(value="/aaa/chat") 
 public class ChatWebSocketServlet  {
 	private static Logger logger=Logger.getLogger(ChatWebSocketServlet.class);
     private static final Set<ChatWebSocketServlet> connections =  new CopyOnWriteArraySet<ChatWebSocketServlet>();  
@@ -31,7 +31,7 @@ public class ChatWebSocketServlet  {
 	}
 	@OnOpen
 	public void onopen(Session session) {  
-		logger.debug("websocket is open.........");
+		logger.debug("websocket is open...............");
 		this.session=session;
 		connections.add(this);
 	}

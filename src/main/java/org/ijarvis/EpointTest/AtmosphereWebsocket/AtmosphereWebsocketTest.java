@@ -12,7 +12,7 @@ import org.atmosphere.cpr.AtmosphereResourceEvent;
 import org.atmosphere.cpr.AtmosphereResourceFactory;
 import org.atmosphere.cpr.BroadcasterFactory;
 
-@ManagedService(path="/websocket/chat")
+@ManagedService(path="/websocket/pid")
 public class AtmosphereWebsocketTest {
 	private static Logger logger=Logger.getLogger(AtmosphereWebsocketTest.class);
 	@Inject
@@ -26,13 +26,11 @@ public class AtmosphereWebsocketTest {
 	
 	@Message
 	public String onMessage(String resource){
-		logger.debug("Atmosphere.......onMessage........"+resource);
+		logger.debug("Atmosphere.......onMessage..&&&&&####&&&&&&&......"+resource);
 		return resource;
 	}
 	@Disconnect
 	public void disconnected(AtmosphereResourceEvent r) {
 		logger.debug("Atmosphere.............disconnected...........");
 	}
-	
-
 }

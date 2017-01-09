@@ -1,18 +1,20 @@
 package org.ijarvis.EpointTest;
 
-import org.apache.log4j.lf5.viewer.TrackingAdjustmentListener;
+import java.io.IOException;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.ijarvis.EpointTest.trilead.trileadUnit;
+import org.junit.Test;
+
 
 public class MyTest {
-	public static void main(String[] args) throws JsonProcessingException {
-//		Document temp= new Document();
-//		temp.put("id", "11111");
-//		temp.put("name", "11111");
-//		ObjectMapper mapper = new ObjectMapper();  
-//		String Json =  mapper.writeValueAsString(temp);
-//		System.out.println(Json);
+	public static void main(String[] args) throws IOException {
+		trileadUnit test=new trileadUnit();
+		test.execCommand("tail -f anaconda-ks.cfg");
+	}
+	@Test
+	public void trileadUnitTest() throws IOException{
+		trileadUnit test=new trileadUnit();
+		test.execCommand("tail -f anaconda-ks.cfg");
 		
 	}
 
