@@ -21,7 +21,7 @@ public class AtmosphereWebsocketTest {
     private AtmosphereResourceFactory resourceFactory;
 	@Ready
 	public void onReady(AtmosphereResource resource){
-		logger.debug("Atmosphere.............onReady...........");
+		logger.debug("Atmosphere.............onReady......********.....");
 	}
 	
 	@Message
