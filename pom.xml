@@ -5,7 +5,7 @@
   <artifactId>myStudyTest</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>EpointTest Maven Webapp</name>
+  <name>myStudyTest Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <!-- Tomcat 必须的编译的时候需要的包   -->
@@ -156,7 +156,7 @@
 
   </dependencies>
   <build>
-    <finalName>EpointTest</finalName>
+    <finalName>myStudyTest</finalName>
     <pluginManagement>
     <plugins>
      <plugin>
