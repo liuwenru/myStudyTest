@@ -4,7 +4,23 @@
 	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 	<display-name>EpointTest</display-name>
-	<!-- 配置 Druid 监控信息显示页面 -->
+
+	<!--启用Spring MVC START-->
+	<servlet>
+		<servlet-name>SpringMVC</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+	<!--启用Spring MVC END-->
+		<!-- 配置 Druid 监控信息显示页面 -->
 	<servlet>  
 	    <servlet-name>DruidStatView</servlet-name>  
 	    <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>  
@@ -18,21 +34,6 @@
 	    <servlet-name>DruidStatView</servlet-name>  
 	    <url-pattern>/druid/*</url-pattern>  
 	</servlet-mapping>
-	<!--启用Spring MVC START-->
-	<servlet>
-		<servlet-name>SpringMVC</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:spring-mvc.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>SpringMVC</servlet-name>
-		<url-pattern>/springmvc/*</url-pattern>
-	</servlet-mapping>
-	<!--启用Spring MVC END-->
 	<!-- 配置Atmosphere websocket -->
 	 <servlet>
         <description>AtmosphereServlet</description>

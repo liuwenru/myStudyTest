@@ -49,7 +49,7 @@ public class trileadUnit {
             System.out.println(line);  
         }  
 	}
-	public static void main(String args[]) throws IOException{
+	public static void mainq(String args[]) throws IOException{
 		new trileadUnit().execCommand("vim anaconda-ks.cfg");
 	}
 	

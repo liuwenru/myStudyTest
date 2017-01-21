@@ -16,7 +16,7 @@ public class GeoIPUntils {
 
     }
 
-    public  static  void  main(String[] args) throws IOException {
+    public  static  void  mainq(String[] args) throws IOException {
         String strText = "/home/ijarvis/Documents/workspace/EpointTest/src/main/resources/province_EN2CN.txt";
         ObjectMapper objMapper = new ObjectMapper();
         JsonNode rootNode = objMapper.readTree(new File(strText));

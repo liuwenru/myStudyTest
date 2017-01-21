@@ -12,7 +12,7 @@ public class JedisUntils {
     private  static  final  int port=6379;
     private static  final  HashMap<String,Integer> AccCount=new HashMap<String,Integer>();
     private  static  final  String hashmap_keys="TEST_MAP1";
-    public  static  void  main(String[] args){
+    public  static  void  mainq(String[] args){
         Long start=System.currentTimeMillis();
         Jedis jedis = new Jedis(host,port);
         jedis.select(0);

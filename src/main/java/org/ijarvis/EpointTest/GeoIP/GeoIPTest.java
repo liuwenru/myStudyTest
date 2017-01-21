@@ -15,7 +15,7 @@ import java.util.Map;
  * Created by ijarvis on 12/5/16.
  */
 public class GeoIPTest {
-    public  static  void  main(String[] args) throws IOException, GeoIp2Exception {
+    public  static  void  mainq(String[] args) throws IOException, GeoIp2Exception {
         //使用File对象打开数据库文件
         File database = new File("/home/ijarvis/Documents/workspace/EpointTest/src/main/resources/GeoLite2-City.mmdb");
 

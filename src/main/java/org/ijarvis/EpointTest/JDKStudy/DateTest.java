@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
  */
 public class DateTest {
 	private static Logger logger=Logger.getLogger(DateTest.class);
-	public static void main(String[] args){
+	public static void mainq(String[] args){
 		Instant start=Instant.now();
 		
 		logger.debug(start);

@@ -4,7 +4,7 @@ package org.ijarvis.EpointTest.DesignPatternsJunit.Singleton;
  *	如何使用单例模式
  */
 public class Client {
-	public static void main(String[] args) {
+	public static void mainq(String[] args) {
 		Singleton singleton=Singleton.getSingleton();
 		singleton.doSomething();
 	}

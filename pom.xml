@@ -7,6 +7,15 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>myStudyTest Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <dependencyManagement>
+      <dependencies>
+          <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-dependencies</artifactId>
+              <version>1.4.3.RELEASE</version>
+          </dependency>
+      </dependencies>
+  </dependencyManagement>
   <dependencies>
     <!-- Tomcat 必须的编译的时候需要的包   -->
     <dependency>
@@ -135,6 +144,12 @@
       <artifactId>spring-test</artifactId>
       <version>4.3.4.RELEASE</version>
     </dependency>
+    <!-- Spring Boot -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>1.4.3.RELEASE</version>
+    </dependency>
 	<!-- jersey Restful接口 -->
 	<dependency>
 		<groupId>com.sun.jersey</groupId>
@@ -188,6 +203,11 @@
 	      </goals>
 	    </execution>
 	  </executions>
+	</plugin>
+	<!-- Spring Boot的Maven插件，主要用于使用Maven创建应用 -->
+	<plugin>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-maven-plugin</artifactId>
 	</plugin>
     </plugins>
      </pluginManagement>
