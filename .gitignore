@@ -5,6 +5,7 @@
 *.war
 *.ear
 *.hprof
+*.iml
 target/*
 
 # except my config
