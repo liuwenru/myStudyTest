@@ -27,4 +27,22 @@ public class Apps {
         }
         return "hello";
     }
+
+
+    @RequestMapping("/loop")
+    public void loop(){
+        Thread thread=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    try {
+                        Thread.sleep(5000);
+                        System.out.print("aaaaaaaaaaaaaaaaaaaaa");
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
 }
