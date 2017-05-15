@@ -22,7 +22,6 @@ public class Apps {
     @RequestMapping("/home")
     public String hello(@RequestParam(value = "sec") String sec) throws IOException, InterruptedException {
         Thread.sleep(Long.parseLong(sec));
-        logger.info("vvvvv");
         return "hello";
     }
 }
