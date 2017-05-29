@@ -117,8 +117,9 @@
          <version>2.2</version>
          <configuration>
              <url>http://192.168.149.160:8080/manager/text</url>
-             <server>tomcat160</server>
-             <path>/intelliq-web</path>
+             <server>tomcat</server>
+             <username>admin</username>
+             <password>admin</password>
          </configuration>
      </plugin>
     <plugin>
