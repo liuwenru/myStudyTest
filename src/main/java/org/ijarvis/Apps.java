@@ -17,10 +17,10 @@ import java.util.UUID;
  * Created by liuwenru on 2017/2/20.
  */
 @Controller
-@RequestMapping("/index")
+
 public class Apps {
     private static Logger logger=Logger.getLogger(Apps.class);
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String hello(HttpSession session) throws IOException, InterruptedException {
         logger.debug("-------"+session.getAttribute("sec"));
         if (session.getAttribute("sec")==null){
@@ -37,18 +37,12 @@ public class Apps {
         logger.debug(session.getAttribute("sec"));
         return  "hello";
     }
-
     @RequestMapping("/exp")
     public void exp() throws IOException {
         throw new IOException();
     }
-
     @RequestMapping("/redi")
     public  String redic() {
         return "redirect:/index";
-    }
-    @RequestMapping("/")
-    public  String index() {
-        return "hello";
     }
 }
