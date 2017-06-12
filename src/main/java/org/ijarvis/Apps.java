@@ -37,4 +37,18 @@ public class Apps {
         logger.debug(session.getAttribute("sec"));
         return  "hello";
     }
+
+    @RequestMapping("/exp")
+    public void exp() throws IOException {
+        throw new IOException();
+    }
+
+    @RequestMapping("/redi")
+    public  String redic() {
+        return "redirect:/index";
+    }
+    @RequestMapping("/")
+    public  String index() {
+        return "hello";
+    }
 }
