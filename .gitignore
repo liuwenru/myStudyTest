@@ -28,6 +28,8 @@ hs_err_pid*
 
 *.log
 
+_config.yml
 
 .gradle
 gradle
+build
