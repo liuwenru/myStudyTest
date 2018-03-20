@@ -14,8 +14,8 @@ import java.io.IOException;
 @Controller
 
 public class Apps {
-    private static Logger logger=Logger.getLogger(Apps.class);
-    @RequestMapping("/")
+    private static final Logger logger=Logger.getLogger(Apps.class);
+    @RequestMapping("/res/asasas}")
     public String hello(HttpSession session) throws IOException, InterruptedException {
         logger.error("aaaaaaa");
         logger.debug("-------"+session.getAttribute("sec"));
@@ -25,6 +25,10 @@ public class Apps {
         }
         logger.debug(session.getAttribute("sec"));
         Thread.sleep(Long.parseLong(String.valueOf(Long.parseLong(session.getAttribute("sec").toString()))));
+        int count =0;
+        while (count< 100000){
+            logger.debug(count);
+        }
         return "hello";
     }
     @RequestMapping("/sec")
