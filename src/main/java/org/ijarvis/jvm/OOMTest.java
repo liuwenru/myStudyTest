@@ -2,7 +2,6 @@ package org.ijarvis.jvm;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +15,7 @@ import java.util.List;
 @RequestMapping("/jvm")
 public class OOMTest {
     static class OOMObject{
+        private String name="aaaaaaaaaaaaaaaaaaaaaaaaa";
     }
     @RequestMapping("/oom")
     public String oom(){
