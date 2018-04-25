@@ -5,6 +5,19 @@
          version="3.0">
 	<display-name>EpointTest</display-name>
 
+
+
+	<servlet>
+		<servlet-name>TestServlet</servlet-name>
+		<servlet-class>org.ijarvis.servletTest.Tomcat7058Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TestServlet</servlet-name>
+		<url-pattern>/TestServlet/*</url-pattern>
+	</servlet-mapping>
+
+
+
 	<!--启用Spring MVC START-->
 	<servlet>
 		<servlet-name>SpringMVC</servlet-name>
@@ -17,7 +30,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SpringMVC</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/spring/*</url-pattern>
 	</servlet-mapping>
 
 
