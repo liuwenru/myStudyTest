@@ -21,5 +21,4 @@ public class SpringMVCTest {
         //Thread.sleep(10000);
         resp.getWriter().println("Ep1111oint..*****..................");
     }
-
 }

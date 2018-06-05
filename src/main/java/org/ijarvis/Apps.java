@@ -1,40 +1,29 @@
 package org.ijarvis;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 /**
  * Created by liuwenru on 2017/2/20.
  */
 //@Controller
 //
-//public class Apps {
-//    private static final Logger logger=Logger.getLogger(Apps.class);
-//    @RequestMapping("/res/asasas}")
-//    public String hello(HttpSession session) throws IOException, InterruptedException {
-//        logger.error("aaaaaaa");
-//        logger.debug("-------"+session.getAttribute("sec"));
-//        if (session.getAttribute("sec")==null){
-//            logger.debug("exec here...........");
-//            session.setAttribute("sec",1000);
-//        }
-//        logger.debug(session.getAttribute("sec"));
-//        Thread.sleep(Long.parseLong(String.valueOf(Long.parseLong(session.getAttribute("sec").toString()))));
-//        int count =0;
-//        while (count< 100000){
-//            logger.debug(count);
-//        }
-//        return "hello";
-//    }
-//    @RequestMapping("/sec")
-//    public String setSec(@RequestParam(value = "sec") String sec,HttpSession session){
-//        session.setAttribute("sec",sec);
-//        logger.debug(session.getAttribute("sec"));
-//        return  "hello";
-//    }
-//    @RequestMapping("/exp")
-//    public void exp() throws IOException {
-//        throw new IOException();
-//    }
-//    @RequestMapping("/redi")
-//    public  String redic() {
-//        return "redirect:/index";
-//    }
-//}
+public class Apps {
+   public static void main(String args[]) throws IOException {
+       URL url = new URL(args[0]);
+       HttpURLConnection urlcon = (HttpURLConnection)url.openConnection();
+       urlcon.connect();         //获取连接
+       InputStream is = urlcon.getInputStream();
+       BufferedReader buffer = new BufferedReader(new InputStreamReader(is));
+       StringBuffer bs = new StringBuffer();
+       String l = null;
+       while((l=buffer.readLine())!=null){
+           bs.append(l).append("/n");
+       }
+       System.out.println(bs.toString());
+   }
+}

@@ -19,6 +19,7 @@
 
 
 	<!--启用Spring MVC START-->
+
 	<servlet>
 		<servlet-name>SpringMVC</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

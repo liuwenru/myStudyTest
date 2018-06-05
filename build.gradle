@@ -56,11 +56,9 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
 
 
-
-
 }
 dependencies {
-    def tomcatVersion = '7.0.85'
+    def tomcatVersion = '7.0.76'
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
             "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
             "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}",
