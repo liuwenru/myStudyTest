@@ -9,6 +9,13 @@ package org.ijarvis.servletTest;
  */
 
 
+import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -49,27 +56,45 @@ public class Tomcat7058Servlet extends HttpServlet {
 //
 //            //System.out.println(REQUESTCOUNT+"*"+req.getParameter("BiaoDiGuid")+"*"+req.getParameter("DanWeiGuid")+"*"+req.getParameter("isCommondto")+"*"+req.getParameter("commonDto")+"*"+req.getParameter("cmdParams"));
 //        }
-
     }
+
+//    @Override
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        System.out.println("aaaaaaa");
+//        InputStream is=null;
+//        BufferedReader buffer;
+//        StringBuffer bs;
+//        try {
+//            Thread.sleep(1*1000);
+//            URL url = new URL("http://www.baidu.com");
+//            HttpURLConnection urlcon = (HttpURLConnection)url.openConnection();
+//            urlcon.connect();         //获取连接
+//            is = urlcon.getInputStream();
+//            buffer = new BufferedReader(new InputStreamReader(is));
+//            bs = new StringBuffer();
+//            String l = null;
+//            while((l=buffer.readLine())!=null){
+//                bs.append(l).append("/n");
+//            }
+//            System.out.println(bs.toString());
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }finally {
+//            is.close();
+//        }
+//    }
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("aaaaaaa");
-        try {
-            Thread.sleep(3*1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        URL url = new URL("http://www.swsg.lnjst.gov.cn/GetFvalidDateServiceV2.asmx?wsdl");
-        HttpURLConnection urlcon = (HttpURLConnection)url.openConnection();
-        urlcon.connect();         //获取连接
-        InputStream is = urlcon.getInputStream();
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(is));
-        StringBuffer bs = new StringBuffer();
-        String l = null;
-        while((l=buffer.readLine())!=null){
-            bs.append(l).append("/n");
-        }
-        System.out.println(bs.toString());
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet("https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=gfWBdedM0bApLPDnh6crlhUH&client_secret=qWcC6ep1Lsn1t9f4hZLYywczUxOdMcq0");
+        HttpResponse response1 = httpclient.execute(httpGet);
+        resp.setHeader("Content-Type", "text/html; charset=UTF-8");
+        String responseBody = EntityUtils.toString(response1.getEntity());
+        System.out.println(StringEscapeUtils.unescapeJava(responseBody));
+        resp.getWriter().println("aaaaa -----\n");
+        resp.getWriter().println(StringEscapeUtils.unescapeJava(responseBody));
+        resp.getWriter().println("aaaaa -----\n");
     }
 }

@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by liuwenru on 2017/2/20.
@@ -13,17 +15,15 @@ import java.net.URL;
 //@Controller
 //
 public class Apps {
-   public static void main(String args[]) throws IOException {
-       URL url = new URL(args[0]);
-       HttpURLConnection urlcon = (HttpURLConnection)url.openConnection();
-       urlcon.connect();         //获取连接
-       InputStream is = urlcon.getInputStream();
-       BufferedReader buffer = new BufferedReader(new InputStreamReader(is));
-       StringBuffer bs = new StringBuffer();
-       String l = null;
-       while((l=buffer.readLine())!=null){
-           bs.append(l).append("/n");
-       }
-       System.out.println(bs.toString());
-   }
+    public Apps(String name)
+    {
+        this.name=name;
+    }
+    private String name;
+    public static void main(String[] args) {
+        Map<Apps,String> map = new HashMap<Apps,String>();
+        map.put(new Apps("Shamik"), "Shamik Mitra");
+        String val = map.get(new Apps("Shamik"));
+        System.out.println("Missing equals and hascode so value is not accessible from Map " + val);
+    }
 }

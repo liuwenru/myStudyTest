@@ -7,16 +7,23 @@
 
 
 
-	<servlet>
-		<servlet-name>TestServlet</servlet-name>
-		<servlet-class>org.ijarvis.servletTest.Tomcat7058Servlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>TestServlet</servlet-name>
-		<url-pattern>/TestServlet/*</url-pattern>
-	</servlet-mapping>
+	<!--<servlet>-->
+		<!--<servlet-name>TestServlet</servlet-name>-->
+		<!--<servlet-class>org.ijarvis.servletTest.Tomcat7058Servlet</servlet-class>-->
+	<!--</servlet>-->
+	<!--<servlet-mapping>-->
+		<!--<servlet-name>TestServlet</servlet-name>-->
+		<!--<url-pattern>/TestServlet/*</url-pattern>-->
+	<!--</servlet-mapping>-->
 
-
+	<!--<servlet>-->
+		<!--<servlet-name>HttpMethodTest</servlet-name>-->
+		<!--<servlet-class>org.ijarvis.servletTest.HttpMethodTest</servlet-class>-->
+	<!--</servlet>-->
+	<!--<servlet-mapping>-->
+		<!--<servlet-name>HttpMethodTest</servlet-name>-->
+		<!--<url-pattern>/TestHttpMethod/*</url-pattern>-->
+	<!--</servlet-mapping>-->
 
 	<!--启用Spring MVC START-->
 
