@@ -13,14 +13,12 @@ $(function () {
     var transport = 'websocket';
 
     // We are now ready to cut the request
-    var request = { url: document.location.toString() + 'chat/atmospherechat',
+    var request = { url: document.location.toString() + 'chat',
         contentType : "application/json",
         logLevel : 'debug',
         transport : transport ,
         trackMessageLength : true,
         reconnectInterval : 5000 };
-
-        console.log(request.url);
 
 
     request.onOpen = function(response) {

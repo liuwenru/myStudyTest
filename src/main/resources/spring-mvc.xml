@@ -62,22 +62,23 @@
 		<property name="jobClass" value="org.ijarvis.SpringQuartzApps.SpringQuartz"></property>
 		<property name="durability" value="true"></property>
 	</bean>
-
+	<!--
 	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
 		<property name="jobDetail" ref="jobDetail" />
 		<property name="startDelay" value="1000" />
 		<property name="repeatInterval" value="1000" />
 	</bean>
-
+	-->
 	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
+	<!--
 	<bean id="startQuertz" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-		<!-- 管理trigger -->
 		<property name="triggers">
 			<list>
 				<ref bean="simpleTrigger" />
 			</list>
 		</property>
 	</bean>
+	-->
 	<mvc:annotation-driven/>
 
 </beans> 

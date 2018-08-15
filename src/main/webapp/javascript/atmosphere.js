@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Async-IO.org
+ * Copyright 2015 Async-IO.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@
         hasOwn = Object.prototype.hasOwnProperty;
 
     atmosphere = {
-        version: "2.3.5-javascript",
+        version: "2.3.2-javascript",
         onError: function (response) {
         },
         onClose: function (response) {
@@ -196,8 +196,6 @@
                 closeAsync: false,
                 reconnectOnServerError: true,
                 handleOnlineOffline: true,
-                maxWebsocketErrorRetries: 1,
-                curWebsocketErrorRetries: 0,
                 onError: function (response) {
                 },
                 onClose: function (response) {
@@ -487,7 +485,6 @@
                 _response.responseBody = "";
                 _response.status = 408;
                 _response.partialMessage = "";
-                _request.curWebsocketErrorRetries = 0;
                 _invokeCallback();
                 _disconnect();
                 _clearState();
@@ -677,8 +674,7 @@
 
                         var storage = window.localStorage,
                             get = function (key) {
-                                var item = storage.getItem(name + "-" + key);
-                                return item === null ? [] : atmosphere.util.parseJSON(item);
+                                return atmosphere.util.parseJSON(storage.getItem(name + "-" + key));
                             },
                             set = function (key, value) {
                                 storage.setItem(name + "-" + key, atmosphere.util.stringifyJSON(value));
@@ -1478,10 +1474,6 @@
                     if (_request.heartbeatTimer) {
                         clearTimeout(_request.heartbeatTimer);
                     }
-                    
-                    if (++_request.curWebsocketErrorRetries < _request.maxWebsocketErrorRetries && _request.fallbackTransport !== 'websocket') {
-                        _reconnectWithFallbackTransport("Failed to connect via Websocket. Downgrading to " + _request.fallbackTransport + " and resending");
-                    }
                 };
 
                 _websocket.onclose = function (message) {
@@ -1543,7 +1535,7 @@
 
                     if (_abortingConnection) {
                         atmosphere.util.log(_request.logLevel, ["Websocket closed normally"]);
-                    } else if (!webSocketOpened && _request.fallbackTransport !== 'websocket') {
+                    } else if (!webSocketOpened) {
                         _reconnectWithFallbackTransport("Websocket failed on first connection attempt. Downgrading to " + _request.fallbackTransport + " and resending");
 
                     } else if (_request.reconnect && _response.transport === 'websocket' ) {
@@ -1695,11 +1687,8 @@
                         while (messageStart !== -1) {
                             var str = message.substring(0, messageStart);
                             var messageLength = +str;
-                            if (isNaN(messageLength)) {
-                                // Discard partial message, otherwise it would never recover from this condition
-                                response.partialMessage = '';
+                            if (isNaN(messageLength))
                                 throw new Error('message length "' + str + '" is not a number');
-                            }
                             messageStart += request.messageDelimiter.length;
                             if (messageStart + messageLength > message.length) {
                                 // message not complete, so there is no trailing messageDelimiter
@@ -1747,12 +1736,11 @@
                     atmosphere.util.onTransportFailure(errorMessage, _request);
                 }
 
+                _request.transport = _request.fallbackTransport;
                 var reconnectInterval = _request.connectTimeout === -1 ? 0 : _request.connectTimeout;
                 if (_request.reconnect && _request.transport !== 'none' || _request.transport == null) {
-                	_request.transport = _request.fallbackTransport;
                     _request.method = _request.fallbackMethod;
                     _response.transport = _request.fallbackTransport;
-                    _response.state = '';
                     _request.fallbackTransport = 'none';
                     if (reconnectInterval > 0) {
                         _request.reconnectId = setTimeout(function () {
@@ -2433,9 +2421,6 @@
                                 }
 
                                 var res = cdoc.body ? cdoc.body.lastChild : cdoc;
-                                if (res.omgThisIsBroken) {
-                                    // Cause an exception when res is null, to trigger a reconnect...
-                                }
                                 var readResponse = function () {
                                     // Clones the element not to disturb the original one
                                     var clone = res.cloneNode(true);
@@ -3438,68 +3423,64 @@
         }
     })();
 
-    atmosphere.callbacks = {
-        unload: function() {
-            atmosphere.util.debug(new Date() + " Atmosphere: " + "unload event");
-            atmosphere.unsubscribe();
-        },
-        beforeUnload: function() {
-            atmosphere.util.debug(new Date() + " Atmosphere: " + "beforeunload event");
+    atmosphere.util.on(window, "unload", function (event) {
+        atmosphere.util.debug(new Date() + " Atmosphere: " + "unload event");
+        atmosphere.unsubscribe();
+    });
 
-            // ATMOSPHERE-JAVASCRIPT-143: Delay reconnect to avoid reconnect attempts before an actual unload (we don't know if an unload will happen, yet)
-            atmosphere._beforeUnloadState = true;
-            setTimeout(function () {
-                atmosphere.util.debug(new Date() + " Atmosphere: " + "beforeunload event timeout reached. Reset _beforeUnloadState flag");
-                atmosphere._beforeUnloadState = false;
-            }, 5000);
-        },
-        offline: function() {
-            atmosphere.util.debug(new Date() + " Atmosphere: offline event");
-            offline = true;
-            if (requests.length > 0) {
-                var requestsClone = [].concat(requests);
-                for (var i = 0; i < requestsClone.length; i++) {
-                    var rq = requestsClone[i];
-                    if(rq.request.handleOnlineOffline) {
-                        rq.close();
-                        clearTimeout(rq.response.request.id);
+    atmosphere.util.on(window, "beforeunload", function (event) {
+        atmosphere.util.debug(new Date() + " Atmosphere: " + "beforeunload event");
 
-                        if (rq.heartbeatTimer) {
-                            clearTimeout(rq.heartbeatTimer);
-                        }
-                    }
-                }
+        // ATMOSPHERE-JAVASCRIPT-143: Delay reconnect to avoid reconnect attempts before an actual unload (we don't know if an unload will happen, yet)
+        atmosphere._beforeUnloadState = true;
+        setTimeout(function () {
+            atmosphere.util.debug(new Date() + " Atmosphere: " + "beforeunload event timeout reached. Reset _beforeUnloadState flag");
+            atmosphere._beforeUnloadState = false;
+        }, 5000);
+    });
+
+    // Pressing ESC key in Firefox kills the connection
+    // for your information, this is fixed in Firefox 20
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=614304
+    atmosphere.util.on(window, "keypress", function (event) {
+        if (event.charCode === 27 || event.keyCode === 27) {
+            if (event.preventDefault) {
+                event.preventDefault();
             }
-        },
-        online: function() {
-            atmosphere.util.debug(new Date() + " Atmosphere: online event");
-            if (requests.length > 0) {
-                for (var i = 0; i < requests.length; i++) {
-                    if(requests[i].request.handleOnlineOffline) {
-                        requests[i].init();
-                        requests[i].execute();
-                    }
-                }
-            }
-            offline = false;
         }
-    };
+    });
 
-    atmosphere.bindEvents = function() {
-        atmosphere.util.on(window, "unload", atmosphere.callbacks.unload);
-        atmosphere.util.on(window, "beforeunload", atmosphere.callbacks.beforeUnload);
-        atmosphere.util.on(window, "offline", atmosphere.callbacks.offline);
-        atmosphere.util.on(window, "online", atmosphere.callbacks.online);
-    };
+    atmosphere.util.on(window, "offline", function () {
+        atmosphere.util.debug(new Date() + " Atmosphere: offline event");
+        offline = true;
+        if (requests.length > 0) {
+            var requestsClone = [].concat(requests);
+            for (var i = 0; i < requestsClone.length; i++) {
+                var rq = requestsClone[i];
+                if(rq.request.handleOnlineOffline) {
+                    rq.close();
+                    clearTimeout(rq.response.request.id);
 
-    atmosphere.unbindEvents = function() {
-        atmosphere.util.off(window, "unload", atmosphere.callbacks.unload);
-        atmosphere.util.off(window, "beforeunload", atmosphere.callbacks.beforeUnload);
-        atmosphere.util.off(window, "offline", atmosphere.callbacks.offline);
-        atmosphere.util.off(window, "online", atmosphere.callbacks.online);
-    };
+                    if (rq.heartbeatTimer) {
+                        clearTimeout(rq.heartbeatTimer);
+                    }
+                }
+            }
+        }
+    });
 
-    atmosphere.bindEvents();
+    atmosphere.util.on(window, "online", function () {
+        atmosphere.util.debug(new Date() + " Atmosphere: online event");
+        if (requests.length > 0) {
+            for (var i = 0; i < requests.length; i++) {
+                if(requests[i].request.handleOnlineOffline) {
+                    requests[i].init();
+                    requests[i].execute();
+                }
+            }
+        }
+        offline = false;
+    });
 
     return atmosphere;
 }));

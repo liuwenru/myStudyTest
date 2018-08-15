@@ -51,7 +51,7 @@
 		<!-- limit classpath scanning to speed up starting, not mandatory -->
 		<init-param>
 			<param-name>org.atmosphere.cpr.packages</param-name>
-			<param-value>org.atmosphere.samples</param-value>
+			<param-value>chat</param-value>
 		</init-param>
 		<init-param>
 			<param-name>org.atmosphere.interceptor.HeartbeatInterceptor.clientHeartbeatFrequencyInSeconds</param-name>

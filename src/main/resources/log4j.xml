@@ -17,9 +17,6 @@
 			<param name="ConversionPattern" value="%d [%t] %-5p %C{6} (%F:%L) - %m%n" />
 		</layout>
 	</appender>
-	<logger name="org.apache">
-		<level value="ERROR" />
-	</logger>
 	<root>
 		<level value="DEBUG" />
 		<appender-ref ref="STDOUT" />
