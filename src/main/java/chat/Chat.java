@@ -103,7 +103,7 @@ public class Chat {
     @org.atmosphere.config.service.Message(encoders = {JacksonEncoder.class}, decoders = {JacksonDecoder.class})
     public Message onMessage(Message message) throws IOException {
         logger.info("{} just sent {}", message.getAuthor(), message.getMessage());
+        System.out.println("DDDDDDDDDDDDDDDDDD");
         return message;
     }
-
 }

@@ -1,28 +1,31 @@
-apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'war'
-apply plugin: 'com.bmuschko.tomcat'
-
-
-group = 'ijarvis.intelliq'
-//version = '0.0.1-SNAPSHOT'
-
-description = """intelliq-web Maven Webapp"""
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
 buildscript {
     repositories {
         jcenter()
     }
-
     dependencies {
         classpath 'com.bmuschko:gradle-tomcat-plugin:2.4.2'
     }
 }
+plugins {
+    id "org.zeroturnaround.gradle.jrebel" version "1.1.8"
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'war'
+apply plugin: 'com.bmuschko.tomcat'
+group = 'ijarvis.intelliq'
+//version = '0.0.1-SNAPSHOT'
+description = """intelliq-web Maven Webapp"""
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar.dependsOn(generateRebel)
+war.dependsOn(generateRebel)
+
+
 repositories {
-        
+     maven { url "https://maven.aliyun.com/repository/public" }
      maven { url "http://repo.maven.apache.org/maven2" }
      mavenCentral()
 }
@@ -56,17 +59,19 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
 
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
-    compile fileTree(dir: 'huawei-lib', include: ['*.jar'])
+    //compile fileTree(dir: 'huawei-lib', include: ['*.jar'])
 
     compile group: 'org.quartz-scheduler', name: 'quartz', version: '2.3.0'
     compile group: 'org.quartz-scheduler', name: 'quartz-jobs', version: '2.3.0'
+    compile group: 'org.zeroturnaround', name: 'gradle-jrebel-plugin', version: '1.1.8'
 
 
-}
-dependencies {
+
     def tomcatVersion = '7.0.76'
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
             "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
             "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}",
             "org.apache.tomcat.embed:tomcat-embed-websocket:${tomcatVersion}"
 }
+
+
