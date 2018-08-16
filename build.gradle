@@ -23,9 +23,10 @@ jar.dependsOn(generateRebel)
 war.dependsOn(generateRebel)
 
 repositories {
-     maven { url "https://maven.aliyun.com/repository/public" }
-     maven { url "http://repo.maven.apache.org/maven2" }
-     mavenCentral()
+    maven { url "https://maven.aliyun.com/repository/public" }
+    maven { url "http://repo.maven.apache.org/maven2" }
+    jcenter()
+    mavenCentral()
 }
 dependencies {
     compile group: 'junit', name: 'junit', version:'4.12'
