@@ -19,10 +19,8 @@ group = 'ijarvis.intelliq'
 description = """intelliq-web Maven Webapp"""
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
 jar.dependsOn(generateRebel)
 war.dependsOn(generateRebel)
-
 
 repositories {
      maven { url "https://maven.aliyun.com/repository/public" }
