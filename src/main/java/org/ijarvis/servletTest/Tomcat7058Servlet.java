@@ -16,7 +16,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +32,7 @@ import java.net.URL;
 
 public class Tomcat7058Servlet extends HttpServlet {
     private static int REQUESTCOUNT=0;     //全局计数经过的请求数
-    private static final Logger logger=Logger.getLogger(Tomcat7058Servlet.class);
+    private static final Logger  logger= LoggerFactory.getLogger(Tomcat7058Servlet.class);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

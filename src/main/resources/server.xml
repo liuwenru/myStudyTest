@@ -133,8 +133,7 @@ compressableMimeType="text/html,text/xml,text/javascript,application/javascript,
                resourceName="UserDatabase"/>
       </Realm>
 
-      <Host name="localhost"  appBase="../"
-            unpackWARs="true" autoDeploy="true">
+      <Host name="localhost"  appBase="../" unpackWARs="true" autoDeploy="true">
 
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->

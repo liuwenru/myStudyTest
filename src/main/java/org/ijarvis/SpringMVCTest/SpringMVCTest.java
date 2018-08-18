@@ -25,5 +25,6 @@ public class SpringMVCTest {
         if("null".equals(req.getParameter("requestid"))|| req.getParameter("requestid")==null){
             throw new NullPointerException();
         }
+        logger.debug("2222222");
     }
 }

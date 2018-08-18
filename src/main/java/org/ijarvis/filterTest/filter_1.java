@@ -1,12 +1,15 @@
 package org.ijarvis.filterTest;
 
-import org.apache.log4j.Logger;
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.*;
 import java.io.IOException;
 
 public class filter_1 implements Filter {
-    private static  final Logger logger=Logger.getLogger(filter_1.class);
+    private static  final Logger logger= LoggerFactory.getLogger(filter_1.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
