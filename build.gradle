@@ -61,6 +61,7 @@ dependencies {
 
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
     //compile fileTree(dir: 'huawei-lib', include: ['*.jar'])
+    compile fileTree(dir: 'extra-lib', include: ['*.jar'])
 
     compile group: 'org.quartz-scheduler', name: 'quartz', version: '2.3.0'
     compile group: 'org.quartz-scheduler', name: 'quartz-jobs', version: '2.3.0'
