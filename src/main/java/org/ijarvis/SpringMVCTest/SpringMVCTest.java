@@ -21,10 +21,18 @@ public class SpringMVCTest {
     @RequestMapping("/test")
     @ResponseBody
     public void saveTest(HttpServletRequest req, HttpServletResponse resp) throws IOException, InterruptedException, LifecycleException {
-        System.out.println(req.getParameter("requestid"));
+        logger.debug(req.getParameter("requestid"));
         if("null".equals(req.getParameter("requestid"))|| req.getParameter("requestid")==null){
             throw new NullPointerException();
         }
-        logger.debug("2222222");
+    }
+
+    // 用于测试ModeSecurity的性能问题
+    @RequestMapping("/testModesecurity")
+    @ResponseBody
+    public String AppTest(HttpServletRequest req, HttpServletResponse resp) throws InterruptedException {
+        logger.debug(">>>>>>>>>>>>>>>");
+        Thread.sleep(3000);
+        return "hello";
     }
 }
