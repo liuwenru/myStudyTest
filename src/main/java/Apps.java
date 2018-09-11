@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,10 +13,8 @@ public class Apps {
         this.name=name;
     }
     private String name;
-    public static void main(String[] args) {
-        Map<Apps,String> map = new HashMap<Apps,String>();
-        map.put(new Apps("Shamik"), "Shamik Mitra");
-        String val = map.get(new Apps("Shamik"));
-        System.out.println("Missing equals and hascode so value is not accessible from Map " + val);
+    public static void main(String[] args) throws IOException {
+        Runtime runtime = Runtime.getRuntime();
+        runtime.exec("echo \"111\" >> /tmp/aaa.log");
     }
 }
