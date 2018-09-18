@@ -20,11 +20,13 @@ public class SpringMVCTest {
     Logger logger = LoggerFactory.getLogger(SpringMVCTest.class);
     @RequestMapping("/test")
     @ResponseBody
-    public void saveTest(HttpServletRequest req, HttpServletResponse resp) throws IOException, InterruptedException, LifecycleException {
+    public String saveTest(HttpServletRequest req, HttpServletResponse resp) throws IOException, InterruptedException, LifecycleException {
         logger.debug(req.getParameter("requestid"));
         if("null".equals(req.getParameter("requestid"))|| req.getParameter("requestid")==null){
             throw new NullPointerException();
         }
+        Thread.sleep(2000);
+        return "hello";
     }
 
     // 用于测试ModeSecurity的性能问题
