@@ -34,7 +34,7 @@ public class SpringMVCTest {
     @ResponseBody
     public String AppTest(HttpServletRequest req, HttpServletResponse resp) throws InterruptedException {
         logger.debug(">>>>>>>>>>>>>>>");
-        Thread.sleep(1000);
+        Thread.sleep(500);
         return "hello";
     }
 }
