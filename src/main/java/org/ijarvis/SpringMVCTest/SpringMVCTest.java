@@ -7,6 +7,7 @@ import org.apache.catalina.LifecycleState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -35,6 +36,23 @@ public class SpringMVCTest {
     public String AppTest(HttpServletRequest req, HttpServletResponse resp) throws InterruptedException {
         logger.debug(">>>>>>>>>>>>>>>");
         Thread.sleep(500);
+        return "hello";
+    }
+
+
+    @RequestMapping("/SleepPerfTest")
+    @ResponseBody
+    public String SleepPerfTest(HttpServletRequest req, HttpServletResponse resp) throws IOException, InterruptedException, LifecycleException {
+        logger.debug(req.getParameter("sleep"));
+        Thread.sleep(Long.parseLong(req.getParameter("sleep")));
+        return "hello";
+    }
+
+
+    @RequestMapping("/getsystemenv")
+    public String sysenvTest(){
+        String docker =System.getenv("CURRENT_ALPINE_GLIBC_BASE_IMAGE_VER");
+        logger.debug("envinfo----"+docker);
         return "hello";
     }
 }
