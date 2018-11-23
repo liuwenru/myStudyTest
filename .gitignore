@@ -34,3 +34,4 @@ _config.yml
 gradle
 build
 out
+.DS_Store
