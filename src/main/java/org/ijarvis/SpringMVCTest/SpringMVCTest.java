@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -55,4 +57,37 @@ public class SpringMVCTest {
         logger.debug("envinfo----"+docker);
         return "hello";
     }
+    @RequestMapping("/mkdirtest")
+    public String mkdirTest(HttpServletRequest req, HttpServletResponse resp){
+        String path=req.getParameter("dirpath");
+        File file=new File(path);
+        if(! file.exists()){
+            logger.debug("mkdir path"+path);
+            file.mkdir();
+        }
+        return "hello";
+    }
+
+
+    @RequestMapping("/addcookies")
+    public String addcookies(HttpServletRequest req, HttpServletResponse resp){
+        resp.addCookie(new Cookie("ssid","epoint"));
+        return "hello";
+    }
+
+
+    @RequestMapping("/delcookies")
+    public String delcookies(HttpServletRequest req, HttpServletResponse resp){
+        Cookie[] cookies=req.getCookies();
+        for(Cookie cookie:cookies)
+            if ("ssid".equals(cookie.getName())){
+                System.out.println("Cookies is : Domain "+cookie.getDomain()+" MaxAge: "+cookie.getMaxAge()+" name:"+cookie.getName());
+                cookie.setMaxAge(0);
+                cookie.setValue("");
+                resp.addCookie(cookie);
+            }
+        return "hello";
+    }
+
+
 }

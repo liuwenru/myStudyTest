@@ -41,14 +41,12 @@
 		<url-pattern>/spring/*</url-pattern>
 	</servlet-mapping>
 
-
-
 	<!--启用 Atmosphere-->
+	<!--
 	<servlet>
 		<description>AtmosphereServlet</description>
 		<servlet-name>AtmosphereServlet</servlet-name>
 		<servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
-		<!-- limit classpath scanning to speed up starting, not mandatory -->
 		<init-param>
 			<param-name>org.atmosphere.cpr.packages</param-name>
 			<param-value>chat</param-value>
@@ -64,6 +62,6 @@
 		<servlet-name>AtmosphereServlet</servlet-name>
 		<url-pattern>/chat/*</url-pattern>
 	</servlet-mapping>
-
+	-->
 
 </web-app>
