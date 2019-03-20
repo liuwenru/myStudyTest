@@ -157,9 +157,7 @@
             <artifactId>tomcat7-maven-plugin</artifactId>
             <version>2.2</version>
             <configuration>
-                <!--
-                <serverXml>src/main/resources/server.xml</serverXml>
-                -->
+                <serverXml>${basedir}/src/main/resources/server.xml</serverXml>
             </configuration>
             <dependencies>
                 <dependency>

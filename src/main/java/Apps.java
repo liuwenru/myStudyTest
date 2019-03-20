@@ -8,13 +8,6 @@ import java.util.Map;
 //@Controller
 //
 public class Apps {
-    public Apps(String name)
-    {
-        this.name=name;
-    }
-    private String name;
     public static void main(String[] args) throws IOException {
-        Runtime runtime = Runtime.getRuntime();
-        runtime.exec("echo \"111\" >> /tmp/aaa.log");
     }
 }

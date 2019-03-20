@@ -16,78 +16,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.concurrent.TimeUnit;
 
 @Controller
 public class SpringMVCTest {
     Logger logger = LoggerFactory.getLogger(SpringMVCTest.class);
-    @RequestMapping("/test")
-    @ResponseBody
-    public String saveTest(HttpServletRequest req, HttpServletResponse resp) throws IOException, InterruptedException, LifecycleException {
-        logger.debug(req.getParameter("requestid"));
-        if("null".equals(req.getParameter("requestid"))|| req.getParameter("requestid")==null){
-            throw new NullPointerException();
-        }
-        Thread.sleep(2000);
+    @RequestMapping("/getusername")
+    public String getusername(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
+        String username= req.getParameter("username");
+        System.out.println("---------");
+        System.out.println(username);
+        System.out.println(new String(username.getBytes("ISO8859-1"),"UTF-8"));
+        System.out.println("---------");
         return "hello";
     }
-
-    // 用于测试ModeSecurity的性能问题
-    @RequestMapping("/testModesecurity")
-    @ResponseBody
-    public String AppTest(HttpServletRequest req, HttpServletResponse resp) throws InterruptedException {
-        logger.debug(">>>>>>>>>>>>>>>");
-        Thread.sleep(500);
-        return "hello";
-    }
-
-
-    @RequestMapping("/SleepPerfTest")
-    @ResponseBody
-    public String SleepPerfTest(HttpServletRequest req, HttpServletResponse resp) throws IOException, InterruptedException, LifecycleException {
-        logger.debug(req.getParameter("sleep"));
-        Thread.sleep(Long.parseLong(req.getParameter("sleep")));
-        return "hello";
-    }
-
-
-    @RequestMapping("/getsystemenv")
-    public String sysenvTest(){
-        String docker =System.getenv("CURRENT_ALPINE_GLIBC_BASE_IMAGE_VER");
-        logger.debug("envinfo----"+docker);
-        return "hello";
-    }
-    @RequestMapping("/mkdirtest")
-    public String mkdirTest(HttpServletRequest req, HttpServletResponse resp){
-        String path=req.getParameter("dirpath");
-        File file=new File(path);
-        if(! file.exists()){
-            logger.debug("mkdir path"+path);
-            file.mkdir();
-        }
-        return "hello";
-    }
-
-
-    @RequestMapping("/addcookies")
-    public String addcookies(HttpServletRequest req, HttpServletResponse resp){
-        resp.addCookie(new Cookie("ssid","epoint"));
-        return "hello";
-    }
-
-
-    @RequestMapping("/delcookies")
-    public String delcookies(HttpServletRequest req, HttpServletResponse resp){
-        Cookie[] cookies=req.getCookies();
-        for(Cookie cookie:cookies)
-            if ("ssid".equals(cookie.getName())){
-                System.out.println("Cookies is : Domain "+cookie.getDomain()+" MaxAge: "+cookie.getMaxAge()+" name:"+cookie.getName());
-                cookie.setMaxAge(0);
-                cookie.setValue("");
-                resp.addCookie(cookie);
-            }
-        return "hello";
-    }
-
 
 }
