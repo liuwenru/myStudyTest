@@ -26,10 +26,7 @@ public class SpringMVCTest {
     @RequestMapping("/getusername")
     public String getusername(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
         String username= req.getParameter("username");
-        System.out.println("---------");
-        System.out.println(username);
-        System.out.println(new String(username.getBytes("ISO8859-1"),"UTF-8"));
-        System.out.println("---------");
+        //resp.addCookie(new Cookie("path","111111"));
         return "hello";
     }
 
