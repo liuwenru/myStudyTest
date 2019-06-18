@@ -58,10 +58,10 @@
 	<bean id="tilesviewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"></bean>
 	-->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-	<bean id="jobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-		<property name="jobClass" value="org.ijarvis.SpringQuartzApps.SpringQuartz"></property>
-		<property name="durability" value="true"></property>
-	</bean>
+<!--	<bean id="jobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">-->
+<!--		<property name="jobClass" value="org.ijarvis.SpringQuartzApps.SpringQuartz"></property>-->
+<!--		<property name="durability" value="true"></property>-->
+<!--	</bean>-->
 	<!--
 	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
 		<property name="jobDetail" ref="jobDetail" />
