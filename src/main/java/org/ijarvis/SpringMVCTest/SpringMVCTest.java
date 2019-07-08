@@ -45,19 +45,10 @@ public class SpringMVCTest {
         //out.close();
         return "hello";
     }
-    @RequestMapping("/request2")
+    @RequestMapping("/printf")
     public String request2(HttpServletRequest req, HttpServletResponse resp) throws IOException, InterruptedException {
-
-        HttpSession session = req.getSession();
-        session.setAttribute("name","Epoint");
-        session.getAttribute("name");
+        System.out.println("中文，，，中国，，，，学习强国。。。。。。。");
         return "hello";
     }
-    @RequestMapping("/request3")
-    public String request3(HttpServletRequest req, HttpServletResponse resp) throws IOException, InterruptedException {
 
-        //resp.sendRedirect("/aaaa/bbbb");
-
-        return "hello";
-    }
 }
