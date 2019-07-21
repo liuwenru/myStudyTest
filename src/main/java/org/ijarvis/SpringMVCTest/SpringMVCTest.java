@@ -35,8 +35,6 @@ public class SpringMVCTest {
         Thread.sleep(50000);
         return "hello";
     }
-
-
     @RequestMapping("/openfile")
     public String request1(HttpServletRequest req, HttpServletResponse resp) throws IOException, InterruptedException, ServletException {
         BufferedWriter out=new BufferedWriter(new FileWriter("/tmp/aaa.txt"));
@@ -45,10 +43,4 @@ public class SpringMVCTest {
         //out.close();
         return "hello";
     }
-    @RequestMapping("/printf")
-    public String request2(HttpServletRequest req, HttpServletResponse resp) throws IOException, InterruptedException {
-        System.out.println("中文，，，中国，，，，学习强国。。。。。。。");
-        return "hello";
-    }
-
 }
