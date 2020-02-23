@@ -19,7 +19,7 @@ public class Apps {
     private static ApplicationContext context ;
     private static DataSource dataSource ;
     public static void main(String[] args) throws IOException, SQLException {
-        context=new ClassPathXmlApplicationContext("file:///home/ijarvis/workspace/javaWorkSpace/intelliq-web/src/main/resources/application-context.xml");
+        context=new ClassPathXmlApplicationContext("src/main/resources/application-context.xml");
         dataSource=context.getBean("dataSource", DruidDataSource.class);
         Connection connection=dataSource.getConnection();
         connection.setAutoCommit(false);
