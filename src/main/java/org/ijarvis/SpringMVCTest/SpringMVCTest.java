@@ -32,16 +32,16 @@ import java.util.concurrent.TimeUnit;
 public class SpringMVCTest {
     private static ApplicationContext context ;
     private static DruidDataSource dataSource ;
-    static {
-        context=new ClassPathXmlApplicationContext("file:///opt/application-context.xml");
-        dataSource=context.getBean("dataSource", DruidDataSource.class);
-
-    }
+//    static {
+//        context=new ClassPathXmlApplicationContext("application-context.xml");
+//        dataSource=context.getBean("dataSource", DruidDataSource.class);
+//
+//    }
     Logger logger = LoggerFactory.getLogger(SpringMVCTest.class);
     @RequestMapping("/getusername")
     public String getusername(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
-        String username= req.getParameter("username");
-        resp.addCookie(new Cookie("path","111111"));
+        //String username= req.getParameter("username");
+        //resp.addCookie(new Cookie("path","111111"));
         return "hello";
     }
     @RequestMapping("/sleep")
@@ -59,28 +59,28 @@ public class SpringMVCTest {
         System.out.println("bbbbbbb");
         return "hello";
     }
-    @RequestMapping("/sqlconnections")
-    public String request() throws SQLException, InterruptedException {
-        dataSource.setTransactionQueryTimeout(10000);
-        dataSource.setValidationQueryTimeout(100);
-        dataSource.setQueryTimeout(5);
-        dataSource.setConnectionProperties("oracle.jdbc.ReadTimeout=10000;oracle.net.CONNECT_TIMEOUT=10000");
-        Connection connection=dataSource.getConnection();
-        connection.setAutoCommit(false);
-        Statement statement=connection.createStatement();
-        statement.executeQuery("update x set name='ffffff' where id=1");
-        int i=0;
-        while (true){
-            Thread.sleep(1000);
-            i=i+1;
-            if(i>=60){
-                break;
-            }
-            System.out.println("Sleep Time "+i+" S");
-        }
-        connection.commit();
-        connection.close();
-        return "hello";
-    }
+//    @RequestMapping("/sqlconnections")
+//    public String request() throws SQLException, InterruptedException {
+//        dataSource.setTransactionQueryTimeout(10000);
+//        dataSource.setValidationQueryTimeout(100);
+//        dataSource.setQueryTimeout(5);
+//        dataSource.setConnectionProperties("oracle.jdbc.ReadTimeout=10000;oracle.net.CONNECT_TIMEOUT=10000");
+//        Connection connection=dataSource.getConnection();
+//        connection.setAutoCommit(false);
+//        Statement statement=connection.createStatement();
+//        statement.executeQuery("update x set name='ffffff' where id=1");
+//        int i=0;
+//        while (true){
+//            Thread.sleep(1000);
+//            i=i+1;
+//            if(i>=60){
+//                break;
+//            }
+//            System.out.println("Sleep Time "+i+" S");
+//        }
+//        connection.commit();
+//        connection.close();
+//        return "hello";
+//    }
 
 }
