@@ -35,27 +35,13 @@ public class SpringMVCTest {
     Logger logger = LoggerFactory.getLogger(SpringMVCTest.class);
     @RequestMapping("/getusername")
     public String getusername(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
+        System.out.println("111");
         return "hello";
     }
     @RequestMapping("/sleep")
     public String sleep(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException, InterruptedException {
         Thread.sleep(Integer.parseInt(req.getParameter("sleeptime")));
         System.out.println("i am over......");
-        return "hello";
-    }
-
-    static JedisPool jedisPool=new JedisPool(new JedisPoolConfig(),"192.168.188.150",6379,2000,"Gepoint");
-    @RequestMapping("/redis")
-    public String redis(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException, InterruptedException {
-        Random r=new Random();
-        for(int i=0;i<100;i++){
-            Jedis jedis1= jedisPool.getResource();
-        }
-        Jedis jedis2= jedisPool.getResource();
-        int closebl= r.nextInt(100);
-        if (closebl % 2==0){
-            jedis2.close();
-        }
         return "hello";
     }
 }
