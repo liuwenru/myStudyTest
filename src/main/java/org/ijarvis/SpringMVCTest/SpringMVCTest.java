@@ -33,15 +33,9 @@ public class SpringMVCTest {
 //
 //    }
     Logger logger = LoggerFactory.getLogger(SpringMVCTest.class);
-    @RequestMapping("/getusername")
-    public String getusername(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
-        System.out.println("111");
-        return "hello";
-    }
-    @RequestMapping("/sleep")
+    @RequestMapping("/printmsg")
     public String sleep(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException, InterruptedException {
-        Thread.sleep(Integer.parseInt(req.getParameter("sleeptime")));
-        System.out.println("i am over......");
+        System.out.println(req.getParameter("msg"));
         return "hello";
     }
 }
