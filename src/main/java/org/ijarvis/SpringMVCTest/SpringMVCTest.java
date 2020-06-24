@@ -36,6 +36,7 @@ public class SpringMVCTest {
     @RequestMapping("/printmsg")
     public String sleep(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException, InterruptedException {
         System.out.println(req.getParameter("msg"));
+        System.out.println("中文");
         return "hello";
     }
 }
