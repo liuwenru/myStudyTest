@@ -35,8 +35,9 @@ public class SpringMVCTest {
     Logger logger = LoggerFactory.getLogger(SpringMVCTest.class);
     @RequestMapping("/printmsg")
     public String sleep(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException, InterruptedException {
-        System.out.println(req.getParameter("msg"));
-        System.out.println("中文");
+        for (int i =0;i<1000000;i++){
+            int a=i* new Random().nextInt();
+        }
         return "hello";
     }
 }

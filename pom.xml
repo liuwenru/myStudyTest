@@ -77,7 +77,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.1.10</version>
+            <version>1.1.23</version>
         </dependency>
         <!-- Spring MVC  -->
         <dependency>
