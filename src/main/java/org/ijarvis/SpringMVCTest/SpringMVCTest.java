@@ -27,17 +27,11 @@ import java.util.Random;
 public class SpringMVCTest {
     private static ApplicationContext context ;
     private static DruidDataSource dataSource ;
-//    static {
-//        context=new ClassPathXmlApplicationContext("application-context.xml");
-//        dataSource=context.getBean("dataSource", DruidDataSource.class);
-//
-//    }
+
     Logger logger = LoggerFactory.getLogger(SpringMVCTest.class);
     @RequestMapping("/printmsg")
     public String sleep(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException, InterruptedException {
-        for (int i =0;i<1000000;i++){
-            int a=i* new Random().nextInt();
-        }
+        System.out.println(req.getParameter("msg"));
         return "hello";
     }
 }
