@@ -11,9 +11,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath*:/beans.xml","classpath*:/spring-mvc.xml"})
+@ContextConfiguration({"classpath:spring-mvc.xml"})
 public class TestController {
-    // 模拟request,response
+
     private MockHttpServletRequest request;
     private MockHttpServletResponse response;
 
@@ -28,16 +28,12 @@ public class TestController {
         request.setCharacterEncoding("UTF-8");
         response = new MockHttpServletResponse();
     }
-    /**
-     *
-     * @Title：testLogin
-     * @Description: 测试用户登录
-     */
+
     @Test
     public void testLogin() {
         try {
             request.setParameter("userName", "admin");
-            request.setParameter("password", "2");
+            request.setParameter("password", "1");
             assertEquals("login",loginController.loginTest(request,response)) ;
         } catch (Exception e) {
             e.printStackTrace();

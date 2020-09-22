@@ -28,26 +28,7 @@ import java.util.Random;
 public class SpringMVCTest {
     private static ApplicationContext context ;
     private static DruidDataSource dataSource ;
-
     Logger logger = LoggerFactory.getLogger(SpringMVCTest.class);
-    @RequestMapping("/printmsg")
-    public String sleep(HttpServletRequest req, HttpServletResponse resp) throws IOException, InterruptedException {
-        try {
-            System.out.println(req.getParameter("msg"));
-            for(int i=0;i<1000000000;i++){
-                logger.debug("insert number"+i);
-                logger.error("insert number"+i);
-                //Thread.sleep(1000);
-                throw new IOException();
-            }
-
-        }catch (Exception e){
-
-        }
-        finally {
-            return "hello";
-        }
-    }
     @RequestMapping(value = "/loginTest", method = RequestMethod.POST)
     public String loginTest(HttpServletRequest request,HttpServletResponse response){
         String account = request.getParameter("userName");
