@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -30,8 +31,31 @@ public class SpringMVCTest {
 
     Logger logger = LoggerFactory.getLogger(SpringMVCTest.class);
     @RequestMapping("/printmsg")
-    public String sleep(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException, InterruptedException {
-        System.out.println(req.getParameter("msg"));
-        return "hello";
+    public String sleep(HttpServletRequest req, HttpServletResponse resp) throws IOException, InterruptedException {
+        try {
+            System.out.println(req.getParameter("msg"));
+            for(int i=0;i<1000000000;i++){
+                logger.debug("insert number"+i);
+                logger.error("insert number"+i);
+                //Thread.sleep(1000);
+                throw new IOException();
+            }
+
+        }catch (Exception e){
+
+        }
+        finally {
+            return "hello";
+        }
+    }
+    @RequestMapping(value = "/loginTest", method = RequestMethod.POST)
+    public String loginTest(HttpServletRequest request,HttpServletResponse response){
+        String account = request.getParameter("userName");
+        String password = request.getParameter("password");
+        if (account.equals("admin")&&password.equals("1")){
+            return "index";
+        }else{
+            return "login";
+        }
     }
 }
