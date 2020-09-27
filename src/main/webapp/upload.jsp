@@ -6,7 +6,7 @@
     </head>
     <body>
         <form method="POST" action="spring/uploadFile" enctype="multipart/form-data">
-           File to upload: <input type="file" name="file">
+           上传文件: <input type="file" name="file">
            <input type="submit" value="Upload"> 单击此处进行上传
         </form>
     </body>
