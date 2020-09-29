@@ -1,0 +1,69 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+	<display-name>Intelliq-web</display-name>
+	<!--<servlet>-->
+		<!--<servlet-name>TestServlet</servlet-name>-->
+		<!--<servlet-class>org.ijarvis.servletTest.Tomcat7058Servlet</servlet-class>-->
+	<!--</servlet>-->
+	<!--<servlet-mapping>-->
+		<!--<servlet-name>TestServlet</servlet-name>-->
+		<!--<url-pattern>/TestServlet/*</url-pattern>-->
+	<!--</servlet-mapping>-->
+
+	<!--<servlet>-->
+		<!--<servlet-name>HttpMethodTest</servlet-name>-->
+		<!--<servlet-class>org.ijarvis.servletTest.HttpMethodTest</servlet-class>-->
+	<!--</servlet>-->
+	<!--<servlet-mapping>-->
+		<!--<servlet-name>HttpMethodTest</servlet-name>-->
+		<!--<url-pattern>/TestHttpMethod/*</url-pattern>-->
+	<!--</servlet-mapping>-->
+
+	<!--启用Spring MVC START-->
+
+	<servlet>
+		<servlet-name>SpringMVC</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+		<multipart-config>
+			<location>/Users/liuwenru/workspace/javaworkspace/intelliq-web/</location>
+			<max-file-size>2097152</max-file-size>
+			<max-request-size>4194304</max-request-size>
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/spring/*</url-pattern>
+	</servlet-mapping>
+
+	<!--启用 Atmosphere-->
+	<!--
+	<servlet>
+		<description>AtmosphereServlet</description>
+		<servlet-name>AtmosphereServlet</servlet-name>
+		<servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
+		<init-param>
+			<param-name>org.atmosphere.cpr.packages</param-name>
+			<param-value>chat</param-value>
+		</init-param>
+		<init-param>
+			<param-name>org.atmosphere.interceptor.HeartbeatInterceptor.clientHeartbeatFrequencyInSeconds</param-name>
+			<param-value>10</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
+		<async-supported>true</async-supported>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AtmosphereServlet</servlet-name>
+		<url-pattern>/chat/*</url-pattern>
+	</servlet-mapping>
+	-->
+
+</web-app>
