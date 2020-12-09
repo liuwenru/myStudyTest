@@ -41,4 +41,11 @@ public class Apps {
         System.out.println(msg);
         return "index";
     }
+    @RequestMapping(value = "/sleepbyparam", method = {RequestMethod.POST,RequestMethod.GET})
+    public String sleepbyparam(HttpServletRequest request,HttpServletResponse response) throws InterruptedException {
+        String time = request.getParameter("time");
+        System.out.println(time);
+        Thread.sleep(Long.parseLong(time));
+        return "hello";
+    }
 }
