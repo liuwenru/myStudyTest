@@ -1,4 +1,3 @@
-<%@ page session="false" %>
 <html>
     <head>
        <title>Upload File Request Page</title>
