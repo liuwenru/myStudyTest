@@ -38,9 +38,10 @@ public class Apps {
     @RequestMapping(value = "/printmsg", method = {RequestMethod.POST,RequestMethod.GET})
     public String PrintMsg(HttpServletRequest request,HttpServletResponse response) throws InterruptedException {
         String msg = request.getParameter("msg");
-
         System.out.println(msg);
         return "hello";
+
+
     }
     @RequestMapping(value = "/sleepbyparam", method = {RequestMethod.POST,RequestMethod.GET})
     public String sleepbyparam(HttpServletRequest request,HttpServletResponse response) throws InterruptedException {
