@@ -1,6 +1,4 @@
 package org.ijarvis.SpringMVCApp;
-
-
 import FilesystemApps.Fallocate;
 import com.alibaba.druid.pool.DataSourceClosedException;
 import com.alibaba.druid.pool.DruidDataSource;
@@ -22,8 +20,6 @@ import java.sql.SQLException;
 
 @Controller
 public class Apps {
-    private static int a=2;
-    private static ApplicationContext context ;
     @Autowired
     private DruidDataSource dataSource ;
     Logger logger = LoggerFactory.getLogger(Apps.class);
@@ -31,16 +27,8 @@ public class Apps {
     public String loginTest(HttpServletRequest request,HttpServletResponse response) throws SQLException {
         Connection connection= dataSource.getConnection();
         ResultSet resultSet= connection.createStatement().executeQuery("SELECT count(*) from employees.employees");
-
         connection.close();
-        try {
-            if (a==2){
-                throw  new MyException("heigei");
-            }
-        }catch (Exception e){
-            System.out.println("heihei");
-        }
-        return "index";
+        return "hello";
     }
     @RequestMapping(value = "/printmsg", method = {RequestMethod.POST,RequestMethod.GET})
     public String PrintMsg(HttpServletRequest request,HttpServletResponse response) throws InterruptedException {
@@ -55,6 +43,4 @@ public class Apps {
         Thread.sleep(Long.parseLong(time));
         return "hello";
     }
-
-
 }
