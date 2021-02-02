@@ -4,8 +4,8 @@
         <!-- 定义日志格式 -->
         <Property name="log.pattern">%d{MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}  %msg %n</Property>
         <!-- 定义文件名变量 -->
-        <Property name="file.err.filename">intelliq-console.log</Property>
-        <Property name="file.err.pattern">intelliq-console.%i.log.gz</Property>
+        <Property name="file.err.filename">intelliq-web.log</Property>
+        <Property name="file.err.pattern">intelliq-web.%i.log.gz</Property>
     </Properties>
     <!-- 定义Appender，即目的地 -->
     <Appenders>
