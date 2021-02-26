@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,19 +27,13 @@ public class Apps {
         Connection connection= dataSource.getConnection();
         ResultSet resultSet= connection.createStatement().executeQuery("SELECT count(*) from employees.employees");
         connection.close();
-        return "hello";
+        return "index";
     }
-    @RequestMapping(value = "/printmsg", method = {RequestMethod.POST,RequestMethod.GET})
-    public String PrintMsg(HttpServletRequest request,HttpServletResponse response) throws InterruptedException {
-        String msg = request.getParameter("msg");
-        System.out.println(msg);
-        return "hello";
-    }
-    @RequestMapping(value = "/sleepbyparam", method = {RequestMethod.POST,RequestMethod.GET})
-    public String sleepbyparam(HttpServletRequest request,HttpServletResponse response) throws InterruptedException {
-        String time = request.getParameter("time");
-        System.out.println(time);
-        Thread.sleep(Long.parseLong(time));
-        return "hello";
+
+    @RequestMapping(value = "/index", method = {RequestMethod.POST,RequestMethod.GET})
+    public String index(Model model,HttpServletRequest request,HttpServletResponse response){
+        model.addAttribute("text", "This is MyTest page with Thymeleaf!");
+        model.addAttribute("name", request.getParameter("name"));
+        return "index.html";
     }
 }

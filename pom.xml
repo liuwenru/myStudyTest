@@ -8,7 +8,7 @@
     <url>http://maven.apache.org</url>
     <properties>
         <tomcat.version>7.0.84</tomcat.version>
-        <spring.version>5.2.12.RELEASE</spring.version>
+        <spring.version>4.3.9.RELEASE</spring.version>
     </properties>
     <dependencies>
         <dependency>
@@ -98,8 +98,18 @@
         </dependency>
         <dependency>
             <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring5</artifactId>
+            <artifactId>thymeleaf-spring4</artifactId>
             <version>3.0.12.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
