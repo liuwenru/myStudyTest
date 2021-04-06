@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -26,11 +29,18 @@ public class RESTfulservice {
     Logger logger = LoggerFactory.getLogger(RedisService.class);
 
     @RequestMapping(value = "/printmsg", method = {RequestMethod.POST,RequestMethod.GET})
-    public @ResponseBody
-    HashMap<String,String> printmsg(Model model, HttpServletRequest request, HttpServletResponse response) {
+    public void printmsg(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HashMap<String,String> rs=new HashMap<String,String>();
-        rs.put("printmsg",request.getParameter("msg"));
-        return  rs;
+
+
+//        rs.put("printmsg",request.getParameter("msg"));
+//        rs.put("userid",request.getHeader("userid").toString());
+        String str="11111111111111111111111111111111111111111111111111111111111111111111111";
+        response.setContentLength((int)str.length()+2);
+        response.getWriter().write(str);
+
+        request.getRequestDispatcher("index.html").forward(request,response);
+        return;
     }
 
     @RequestMapping(value = "/getserviceall", method = {RequestMethod.POST,RequestMethod.GET})
@@ -41,7 +51,6 @@ public class RESTfulservice {
         rs.put("mysqlinfo",dowebrequest("http://localhost:8080/intelliq-web/spring/mysql"));
         return  rs;
     }
-
     public String dowebrequest(String url) throws IOException {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         try {
@@ -72,6 +81,4 @@ public class RESTfulservice {
             httpclient.close();
         }
     }
-
-
 }
