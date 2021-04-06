@@ -29,18 +29,10 @@ public class RESTfulservice {
     Logger logger = LoggerFactory.getLogger(RedisService.class);
 
     @RequestMapping(value = "/printmsg", method = {RequestMethod.POST,RequestMethod.GET})
-    public void printmsg(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public @ResponseBody HashMap<String,String> printmsg(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HashMap<String,String> rs=new HashMap<String,String>();
-
-
-//        rs.put("printmsg",request.getParameter("msg"));
-//        rs.put("userid",request.getHeader("userid").toString());
-        String str="11111111111111111111111111111111111111111111111111111111111111111111111";
-        response.setContentLength((int)str.length()+2);
-        response.getWriter().write(str);
-
-        request.getRequestDispatcher("index.html").forward(request,response);
-        return;
+        rs.put("name","liuwenru");
+        return rs;
     }
 
     @RequestMapping(value = "/getserviceall", method = {RequestMethod.POST,RequestMethod.GET})

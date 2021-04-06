@@ -149,7 +149,6 @@
             <version>2.2</version>
             <configuration>
                 <port>7080</port>
-                <!--                <serverXml>${basedir}/src/main/resources/server.xml</serverXml>-->
             </configuration>
             <dependencies>
                 <dependency>
