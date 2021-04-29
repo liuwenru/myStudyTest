@@ -21,7 +21,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.io.*;
+import java.net.URLDecoder;
 import java.util.HashMap;
 
 @Controller
@@ -29,12 +30,41 @@ public class RESTfulservice {
     Logger logger = LoggerFactory.getLogger(RedisService.class);
 
     @RequestMapping(value = "/printmsg", method = {RequestMethod.POST,RequestMethod.GET})
-    public @ResponseBody HashMap<String,String> printmsg(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public @ResponseBody HashMap<String,String> printmsg(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException {
         HashMap<String,String> rs=new HashMap<String,String>();
-        rs.put("name","liuwenru");
+        rs.put("content",request.getParameter("p").toString());
+        Thread.sleep(Integer.parseInt(request.getParameter("sleeptime")));
         return rs;
     }
 
+    @RequestMapping(value = "/downloadfile")
+    public void sendUploadVoice(HttpServletResponse response,HttpServletRequest request) {
+        try {
+            //接收请求
+            request.setCharacterEncoding("utf-8");
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("application/octet-stream");
+            //获取文件
+            String fileName = request.getParameter("filename");
+            //获取文件输入流  localFileDir是服务端存储文件的路径
+            File file = new File("/opt/tomcat" + File.separator + fileName);
+            response.setContentLength((int) file.length());
+            response.setHeader("Accept-Ranges", "bytes");
+            InputStream in = new BufferedInputStream(new FileInputStream(file), 4096);
+            OutputStream os = new BufferedOutputStream(response.getOutputStream());
+
+            byte[] bytes = new byte[4096];
+            int i = 0;
+            while ((i = in.read(bytes)) > 0) {
+                os.write(bytes, 0, i);
+            }
+            os.flush();
+            os.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @RequestMapping(value = "/getserviceall", method = {RequestMethod.POST,RequestMethod.GET})
     public @ResponseBody
     HashMap<String,String> getserviceall(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
