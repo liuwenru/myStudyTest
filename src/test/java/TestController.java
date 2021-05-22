@@ -12,7 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -31,24 +30,26 @@ public class TestController {
 
     // 注入loginController
     @Autowired
-    private Apps loginController ;
+    private Apps loginController;
     @Rule
     public ContiPerfRule i = new ContiPerfRule();
+
     // 执行测试方法之前初始化模拟request,response
     @Before
-    public void setUp(){
+    public void setUp() {
         request = new MockHttpServletRequest();
         request.setCharacterEncoding("UTF-8");
         response = new MockHttpServletResponse();
-        mockMvc= MockMvcBuilders.webAppContextSetup(context).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
     }
-    @PerfTest(threads=10, invocations=1)
+
+    @PerfTest(threads = 10, invocations = 1)
     @Test
     public void testLogin() {
         try {
             request.setParameter("userName", "admin");
             request.setParameter("password", "1");
-            assertEquals("index",loginController.loginTest(request,response));
+            assertEquals("index", loginController.loginTest(request, response));
         } catch (Exception e) {
             e.printStackTrace();
         }

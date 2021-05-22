@@ -17,28 +17,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.net.URLDecoder;
 import java.util.HashMap;
 
 @Controller
 public class RESTfulservice {
     Logger logger = LoggerFactory.getLogger(RedisService.class);
 
-    @RequestMapping(value = "/printmsg", method = {RequestMethod.POST,RequestMethod.GET})
-    public @ResponseBody HashMap<String,String> printmsg(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException {
-        HashMap<String,String> rs=new HashMap<String,String>();
-        rs.put("content",request.getParameter("p").toString());
+    @RequestMapping(value = "/printmsg", method = {RequestMethod.POST, RequestMethod.GET})
+    public @ResponseBody
+    HashMap<String, String> printmsg(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException {
+        HashMap<String, String> rs = new HashMap<String, String>();
+        rs.put("content", request.getParameter("p"));
+        logger.debug(request.getParameter("p"));
+        System.out.print(request.getParameter("p"));
         Thread.sleep(Integer.parseInt(request.getParameter("sleeptime")));
         return rs;
     }
 
     @RequestMapping(value = "/downloadfile")
-    public void sendUploadVoice(HttpServletResponse response,HttpServletRequest request) {
+    public void sendUploadVoice(HttpServletResponse response, HttpServletRequest request) {
         try {
             //接收请求
             request.setCharacterEncoding("utf-8");
@@ -65,14 +65,16 @@ public class RESTfulservice {
             e.printStackTrace();
         }
     }
-    @RequestMapping(value = "/getserviceall", method = {RequestMethod.POST,RequestMethod.GET})
+
+    @RequestMapping(value = "/getserviceall", method = {RequestMethod.POST, RequestMethod.GET})
     public @ResponseBody
-    HashMap<String,String> getserviceall(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HashMap<String,String> rs=new HashMap<String,String>();
-        rs.put("redisinfo",dowebrequest("http://localhost:8080/intelliq-web/spring/redis"));
-        rs.put("mysqlinfo",dowebrequest("http://localhost:8080/intelliq-web/spring/mysql"));
-        return  rs;
+    HashMap<String, String> getserviceall(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HashMap<String, String> rs = new HashMap<String, String>();
+        rs.put("redisinfo", dowebrequest("http://localhost:8080/intelliq-web/spring/redis"));
+        rs.put("mysqlinfo", dowebrequest("http://localhost:8080/intelliq-web/spring/mysql"));
+        return rs;
     }
+
     public String dowebrequest(String url) throws IOException {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         try {
@@ -82,7 +84,7 @@ public class RESTfulservice {
             ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
                 @Override
                 public String handleResponse(
-                        final HttpResponse response) throws ClientProtocolException, IOException {
+                        final HttpResponse response) throws IOException {
                     int status = response.getStatusLine().getStatusCode();
                     if (status >= 200 && status < 300) {
                         HttpEntity entity = response.getEntity();
@@ -96,9 +98,9 @@ public class RESTfulservice {
             System.out.println("----------------------------------------");
             System.out.println(responseBody);
             return responseBody;
-        }  catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-            return  "";
+            return "";
         } finally {
             httpclient.close();
         }

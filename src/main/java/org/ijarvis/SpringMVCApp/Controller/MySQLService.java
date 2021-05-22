@@ -17,22 +17,23 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class MySQLService {
     @Autowired
-    private DruidDataSource dataSource ;
+    private DruidDataSource dataSource;
     Logger logger = LoggerFactory.getLogger(Apps.class);
-    @RequestMapping(value = "/mysql", method = {RequestMethod.POST,RequestMethod.GET})
-    public @ResponseBody  HashMap<String,String> mysql(Model model, HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        Connection connection= dataSource.getConnection();
-        ResultSet resultSet= connection.createStatement().executeQuery("SELECT count(*) from employees.employees");
-        HashMap<String,String> rs=new HashMap<String,String>();
-        if (resultSet.next()){
-            rs.put("numcount",resultSet.getString(1));
+
+    @RequestMapping(value = "/mysql", method = {RequestMethod.POST, RequestMethod.GET})
+    public @ResponseBody
+    HashMap<String, String> mysql(Model model, HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        Connection connection = dataSource.getConnection();
+        ResultSet resultSet = connection.createStatement().executeQuery("SELECT count(*) from employees.employees");
+        HashMap<String, String> rs = new HashMap<String, String>();
+        if (resultSet.next()) {
+            rs.put("numcount", resultSet.getString(1));
         }
         connection.close();
-        return  rs;
+        return rs;
     }
 }

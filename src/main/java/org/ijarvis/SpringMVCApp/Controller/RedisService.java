@@ -16,15 +16,16 @@ import java.util.HashMap;
 @Controller
 public class RedisService {
     Logger logger = LoggerFactory.getLogger(RedisService.class);
-    @RequestMapping(value = "/redis", method = {RequestMethod.POST,RequestMethod.GET})
+
+    @RequestMapping(value = "/redis", method = {RequestMethod.POST, RequestMethod.GET})
     public @ResponseBody
-    HashMap<String,String> redis(Model model, HttpServletRequest request, HttpServletResponse response) {
-        Jedis jedis=new Jedis("192.168.188.150",6379);
+    HashMap<String, String> redis(Model model, HttpServletRequest request, HttpServletResponse response) {
+        Jedis jedis = new Jedis("192.168.188.150", 6379);
         jedis.auth("Infra5_Gep0int");
-        String redisinfo=jedis.info();
-        HashMap<String,String> rs=new HashMap<String,String>();
-        rs.put("redisinfo",redisinfo);
+        String redisinfo = jedis.info();
+        HashMap<String, String> rs = new HashMap<String, String>();
+        rs.put("redisinfo", redisinfo);
         jedis.close();
-        return  rs;
+        return rs;
     }
 }

@@ -13,10 +13,11 @@ import java.util.HashMap;
 
 public class RabbitMQService {
     Logger logger = LoggerFactory.getLogger(RabbitMQService.class);
-    @RequestMapping(value = "/rabbitmq", method = {RequestMethod.POST,RequestMethod.GET})
+
+    @RequestMapping(value = "/rabbitmq", method = {RequestMethod.POST, RequestMethod.GET})
     public @ResponseBody
-    HashMap<String,String> rabbitmq(Model model, HttpServletRequest request, HttpServletResponse response) {
-        HashMap<String,String> rs=new HashMap<String,String>();
-        return  rs;
+    HashMap<String, String> rabbitmq(Model model, HttpServletRequest request, HttpServletResponse response) {
+        HashMap<String, String> rs = new HashMap<String, String>();
+        return rs;
     }
 }
