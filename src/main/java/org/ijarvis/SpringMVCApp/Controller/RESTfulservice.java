@@ -29,6 +29,7 @@ public class RESTfulservice {
     @RequestMapping(value = "/printmsg", method = {RequestMethod.POST, RequestMethod.GET})
     public @ResponseBody
     HashMap<String, String> printmsg(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException {
+        System.out.println("appprintmsg  request:"+System.identityHashCode(request)+" response:"+System.identityHashCode(response));
         HashMap<String, String> rs = new HashMap<String, String>();
         rs.put("content", request.getParameter("p"));
         logger.debug(request.getParameter("p"));
