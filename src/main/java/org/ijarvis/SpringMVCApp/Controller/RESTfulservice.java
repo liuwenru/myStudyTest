@@ -29,11 +29,11 @@ public class RESTfulservice {
     @RequestMapping(value = "/printmsg", method = {RequestMethod.POST, RequestMethod.GET})
     public @ResponseBody
     HashMap<String, String> printmsg(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, InterruptedException {
-        System.out.println("appprintmsg  request:"+System.identityHashCode(request)+" response:"+System.identityHashCode(response));
+        System.out.println("appprintmsg  request:"+System.identityHashCode(request)+" response:"+System.identityHashCode(response)+ " "+ response.toString() + "   "+ Thread.currentThread().getName());
         HashMap<String, String> rs = new HashMap<String, String>();
         rs.put("content", request.getParameter("p"));
         logger.debug(request.getParameter("p"));
-        System.out.print(request.getParameter("p"));
+        //System.out.print(request.getParameter("p"));
         Thread.sleep(Integer.parseInt(request.getParameter("sleeptime")));
         return rs;
     }
