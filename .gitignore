@@ -1,0 +1,40 @@
+*.class
+gradlew
+gradlew.bat
+# Package Files #
+*.jar
+*.war
+*.ear
+*.hprof
+*.iml
+target/*
+
+# except my config
+.classpath
+.project
+.settings
+
+logs
+
+/target/
+.idea
+EpointTest.iml
+
+src/main/resources/rebel.xml
+
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+
+*.log
+
+_config.yml
+
+.gradle
+gradle
+build
+out
+.DS_Store
+bin
+
